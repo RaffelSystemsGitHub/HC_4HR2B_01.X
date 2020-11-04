@@ -1,37 +1,37 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2989 `(v ~T0 @X0 0 tf ]
-"90 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 90: void Z4SetHigh(void);
+[v F2996 `(v ~T0 @X0 0 tf ]
+"97 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 97: void Z4SetHigh(void);
 [v _Z4SetHigh `(v ~T0 @X0 0 ef ]
-[v F2992 `(v ~T0 @X0 0 tf ]
-"91
-[; ;mcc_generated_files/tmr0.h: 91: void Z4SetLow(void);
+[v F2999 `(v ~T0 @X0 0 tf ]
+"98
+[; ;mcc_generated_files/tmr0.h: 98: void Z4SetLow(void);
 [v _Z4SetLow `(v ~T0 @X0 0 ef ]
-[v F2995 `(v ~T0 @X0 0 tf ]
-"86
-[; ;mcc_generated_files/tmr0.h: 86: void Z2SetHigh(void);
+[v F3002 `(v ~T0 @X0 0 tf ]
+"93
+[; ;mcc_generated_files/tmr0.h: 93: void Z2SetHigh(void);
 [v _Z2SetHigh `(v ~T0 @X0 0 ef ]
-[v F2998 `(v ~T0 @X0 0 tf ]
-"87
-[; ;mcc_generated_files/tmr0.h: 87: void Z2SetLow(void);
+[v F3005 `(v ~T0 @X0 0 tf ]
+"94
+[; ;mcc_generated_files/tmr0.h: 94: void Z2SetLow(void);
 [v _Z2SetLow `(v ~T0 @X0 0 ef ]
-[v F3001 `(v ~T0 @X0 0 tf ]
-"84
-[; ;mcc_generated_files/tmr0.h: 84: void Z1SetHigh(void);
+[v F3008 `(v ~T0 @X0 0 tf ]
+"91
+[; ;mcc_generated_files/tmr0.h: 91: void Z1SetHigh(void);
 [v _Z1SetHigh `(v ~T0 @X0 0 ef ]
-[v F3004 `(v ~T0 @X0 0 tf ]
-"85
-[; ;mcc_generated_files/tmr0.h: 85: void Z1SetLow(void);
+[v F3011 `(v ~T0 @X0 0 tf ]
+"92
+[; ;mcc_generated_files/tmr0.h: 92: void Z1SetLow(void);
 [v _Z1SetLow `(v ~T0 @X0 0 ef ]
-[v F3007 `(v ~T0 @X0 0 tf ]
-[v F3010 `(v ~T0 @X0 0 tf ]
-[v F3013 `(v ~T0 @X0 0 tf ]
-"88
-[; ;mcc_generated_files/tmr0.h: 88: void Z3SetHigh(void);
+[v F3014 `(v ~T0 @X0 0 tf ]
+[v F3017 `(v ~T0 @X0 0 tf ]
+[v F3020 `(v ~T0 @X0 0 tf ]
+"95
+[; ;mcc_generated_files/tmr0.h: 95: void Z3SetHigh(void);
 [v _Z3SetHigh `(v ~T0 @X0 0 ef ]
-[v F3016 `(v ~T0 @X0 0 tf ]
-"89
-[; ;mcc_generated_files/tmr0.h: 89: void Z3SetLow(void);
+[v F3023 `(v ~T0 @X0 0 tf ]
+"96
+[; ;mcc_generated_files/tmr0.h: 96: void Z3SetLow(void);
 [v _Z3SetLow `(v ~T0 @X0 0 ef ]
 "570 mcc_generated_files/pin_manager.h
 [; ;mcc_generated_files/pin_manager.h: 570: void PIN_MANAGER_Initialize (void);
@@ -42,8 +42,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "96
 [; ;mcc_generated_files/mcc.h: 96: void WDT_Initialize(void);
 [v _WDT_Initialize `(v ~T0 @X0 0 ef ]
-"139 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 139: void TMR0_Initialize(void);
+"146 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 146: void TMR0_Initialize(void);
 [v _TMR0_Initialize `(v ~T0 @X0 0 ef ]
 "2009 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h: 2009: extern volatile unsigned char OSCCON __attribute__((address(0x099)));
@@ -582,103 +582,125 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7818
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h: 7818: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"76 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 76: unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
+"79 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 79: unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
 [v _lift_open_delay `uc ~T0 @X0 1 e ]
 [v _lift_close_delay `uc ~T0 @X0 1 e ]
 [v _back_open_delay `uc ~T0 @X0 1 e ]
 [v _back_close_delay `uc ~T0 @X0 1 e ]
-"77
-[; ;mcc_generated_files/tmr0.h: 77: unsigned int lock_timer, phase_change_timer;
+"80
+[; ;mcc_generated_files/tmr0.h: 80: unsigned int lock_timer, phase_change_timer;
 [v _lock_timer `ui ~T0 @X0 1 e ]
 [v _phase_change_timer `ui ~T0 @X0 1 e ]
-"78
-[; ;mcc_generated_files/tmr0.h: 78: __bit lock_btn_state, lock_actuators, lock_flag, pulse_direction;
+"81
+[; ;mcc_generated_files/tmr0.h: 81: __bit lock_btn_state, hand_control_locked, lock_flag, pulse_direction, should_change_mode, massage_power, mode_btn_state;
 [v _lock_btn_state `b ~T0 @X0 1 e ]
-[v _lock_actuators `b ~T0 @X0 1 e ]
+[v _hand_control_locked `b ~T0 @X0 1 e ]
 [v _lock_flag `b ~T0 @X0 1 e ]
 [v _pulse_direction `b ~T0 @X0 1 e ]
-"79
-[; ;mcc_generated_files/tmr0.h: 79: unsigned char pwm_count = 50;
+[v _should_change_mode `b ~T0 @X0 1 e ]
+[v _massage_power `b ~T0 @X0 1 e ]
+[v _mode_btn_state `b ~T0 @X0 1 e ]
+"82
+[; ;mcc_generated_files/tmr0.h: 82: unsigned char pwm_count = 40;
 [v _pwm_count `uc ~T0 @X0 1 e ]
 [i _pwm_count
--> -> 50 `i `uc
+-> -> 40 `i `uc
 ]
-"80
-[; ;mcc_generated_files/tmr0.h: 80: unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, massage_intensity_setting, massage_phase;
+"83
+[; ;mcc_generated_files/tmr0.h: 83: unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, steady_massage_intensity, massage_phase, massage_mode;
 [v _massage_intensity `uc ~T0 @X0 1 e ]
 [v _pulse_wave_in_intensity `uc ~T0 @X0 1 e ]
 [v _pulse_wave_out_intensity `uc ~T0 @X0 1 e ]
-[v _massage_intensity_setting `uc ~T0 @X0 1 e ]
+[v _steady_massage_intensity `uc ~T0 @X0 1 e ]
 [v _massage_phase `uc ~T0 @X0 1 e ]
-"81
-[; ;mcc_generated_files/tmr0.h: 81: unsigned int second_timer = 1000;
+[v _massage_mode `uc ~T0 @X0 1 e ]
+"84
+[; ;mcc_generated_files/tmr0.h: 84: unsigned char massage_intensity_setting = 1;
+[v _massage_intensity_setting `uc ~T0 @X0 1 e ]
+[i _massage_intensity_setting
+-> -> 1 `i `uc
+]
+"85
+[; ;mcc_generated_files/tmr0.h: 85: unsigned int second_timer = 1000;
 [v _second_timer `ui ~T0 @X0 1 e ]
 [i _second_timer
 -> -> 1000 `i `ui
 ]
-"82
-[; ;mcc_generated_files/tmr0.h: 82: unsigned int heat1_timer, heat2_timer, massage_timer;
+"86
+[; ;mcc_generated_files/tmr0.h: 86: unsigned int heat1_timer, heat2_timer, massage_timer;
 [v _heat1_timer `ui ~T0 @X0 1 e ]
 [v _heat2_timer `ui ~T0 @X0 1 e ]
 [v _massage_timer `ui ~T0 @X0 1 e ]
-"94
-[; ;mcc_generated_files/tmr0.h: 94: void (*WavePlaceHolderOn)(void) = Z4SetHigh;
-[v _WavePlaceHolderOn `*F2989 ~T0 @X0 1 e ]
+"87
+[; ;mcc_generated_files/tmr0.h: 87: unsigned int massage_hold_timer = 2000;
+[v _massage_hold_timer `ui ~T0 @X0 1 e ]
+[i _massage_hold_timer
+-> -> 2000 `i `ui
+]
+"88
+[; ;mcc_generated_files/tmr0.h: 88: unsigned int led_flash_timer = 500;
+[v _led_flash_timer `ui ~T0 @X0 1 e ]
+[i _led_flash_timer
+-> -> 500 `i `ui
+]
+"101
+[; ;mcc_generated_files/tmr0.h: 101: void (*WavePlaceHolderOn)(void) = Z4SetHigh;
+[v _WavePlaceHolderOn `*F2996 ~T0 @X0 1 e ]
 [i _WavePlaceHolderOn
 &U _Z4SetHigh
 ]
-"95
-[; ;mcc_generated_files/tmr0.h: 95: void (*WavePlaceHolderOff)(void) = Z4SetLow;
-[v _WavePlaceHolderOff `*F2992 ~T0 @X0 1 e ]
+"102
+[; ;mcc_generated_files/tmr0.h: 102: void (*WavePlaceHolderOff)(void) = Z4SetLow;
+[v _WavePlaceHolderOff `*F2999 ~T0 @X0 1 e ]
 [i _WavePlaceHolderOff
 &U _Z4SetLow
 ]
-"96
-[; ;mcc_generated_files/tmr0.h: 96: void (*WaveInOn)(void) = Z2SetHigh;
-[v _WaveInOn `*F2995 ~T0 @X0 1 e ]
+"103
+[; ;mcc_generated_files/tmr0.h: 103: void (*WaveInOn)(void) = Z2SetHigh;
+[v _WaveInOn `*F3002 ~T0 @X0 1 e ]
 [i _WaveInOn
 &U _Z2SetHigh
 ]
-"97
-[; ;mcc_generated_files/tmr0.h: 97: void (*WaveInOff)(void) = Z2SetLow;
-[v _WaveInOff `*F2998 ~T0 @X0 1 e ]
+"104
+[; ;mcc_generated_files/tmr0.h: 104: void (*WaveInOff)(void) = Z2SetLow;
+[v _WaveInOff `*F3005 ~T0 @X0 1 e ]
 [i _WaveInOff
 &U _Z2SetLow
 ]
-"98
-[; ;mcc_generated_files/tmr0.h: 98: void (*WaveOutOn)(void) = Z1SetHigh;
-[v _WaveOutOn `*F3001 ~T0 @X0 1 e ]
+"105
+[; ;mcc_generated_files/tmr0.h: 105: void (*WaveOutOn)(void) = Z1SetHigh;
+[v _WaveOutOn `*F3008 ~T0 @X0 1 e ]
 [i _WaveOutOn
 &U _Z1SetHigh
 ]
-"99
-[; ;mcc_generated_files/tmr0.h: 99: void (*WaveOutOff)(void) = Z1SetLow;
-[v _WaveOutOff `*F3004 ~T0 @X0 1 e ]
+"106
+[; ;mcc_generated_files/tmr0.h: 106: void (*WaveOutOff)(void) = Z1SetLow;
+[v _WaveOutOff `*F3011 ~T0 @X0 1 e ]
 [i _WaveOutOff
 &U _Z1SetLow
 ]
-"100
-[; ;mcc_generated_files/tmr0.h: 100: void (*WaveGap1On)(void) = Z4SetHigh;
-[v _WaveGap1On `*F3007 ~T0 @X0 1 e ]
+"107
+[; ;mcc_generated_files/tmr0.h: 107: void (*WaveGap1On)(void) = Z4SetHigh;
+[v _WaveGap1On `*F3014 ~T0 @X0 1 e ]
 [i _WaveGap1On
 &U _Z4SetHigh
 ]
-"101
-[; ;mcc_generated_files/tmr0.h: 101: void (*WaveGap1Off)(void) = Z4SetLow;
-[v _WaveGap1Off `*F3010 ~T0 @X0 1 e ]
+"108
+[; ;mcc_generated_files/tmr0.h: 108: void (*WaveGap1Off)(void) = Z4SetLow;
+[v _WaveGap1Off `*F3017 ~T0 @X0 1 e ]
 [i _WaveGap1Off
 &U _Z4SetLow
 ]
-"102
-[; ;mcc_generated_files/tmr0.h: 102: void (*WaveGap2On)(void) = Z3SetHigh;
-[v _WaveGap2On `*F3013 ~T0 @X0 1 e ]
+"109
+[; ;mcc_generated_files/tmr0.h: 109: void (*WaveGap2On)(void) = Z3SetHigh;
+[v _WaveGap2On `*F3020 ~T0 @X0 1 e ]
 [i _WaveGap2On
 &U _Z3SetHigh
 ]
-"103
-[; ;mcc_generated_files/tmr0.h: 103: void (*WaveGap2Off)(void) = Z3SetLow;
-[v _WaveGap2Off `*F3016 ~T0 @X0 1 e ]
+"110
+[; ;mcc_generated_files/tmr0.h: 110: void (*WaveGap2Off)(void) = Z3SetLow;
+[v _WaveGap2Off `*F3023 ~T0 @X0 1 e ]
 [i _WaveGap2Off
 &U _Z3SetLow
 ]

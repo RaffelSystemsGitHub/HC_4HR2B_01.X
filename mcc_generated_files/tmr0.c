@@ -52,7 +52,8 @@
 #include "tmr0.h"
 #include "pin_manager.h"
 
-#define LOCK_HOLD_TIME 5000
+#define LOCK_HOLD_TIME 4500     //Time to hold lock button to lock the hand control
+#define UNLOCK_HOLD_TIME 8000   //Time to hold lock button to unlock the hand control
 
 /**
   Section: Global Variables Definitions
@@ -112,6 +113,7 @@ void TMR0_ISR(void)
 {
 
     // Clear the TMR0 interrupt flag
+    //Generated code to handle timer ISR
     INTCONbits.TMR0IF = 0;
 
     TMR0 = timer0ReloadVal;
@@ -120,7 +122,9 @@ void TMR0_ISR(void)
     {
         TMR0_InterruptHandler();
     }
+    //End generated code
     
+    //Decrement timers
     if(lift_open_delay){
         lift_open_delay--;
     }
@@ -133,6 +137,11 @@ void TMR0_ISR(void)
     if(back_close_delay){
         back_close_delay--;
     }
+    if(led_flash_timer){
+        led_flash_timer--;
+    }
+    
+    //Massage and heat shutdown timers
     if(second_timer){
         second_timer--;
     }else{
@@ -148,54 +157,71 @@ void TMR0_ISR(void)
             massage_timer--;
         }
     }
-
     
     if(lock_btn_state){
-        if(!lock_flag){
+        if(!lock_flag){     //only execute one change to lock state per press
             if(lock_timer){
                 lock_timer--;
             }else{
                 lock_flag = 1;
-                lock_actuators = !lock_actuators;
+                hand_control_locked = !hand_control_locked;
+                //if the actuator is being unlocked, set the init led timer
+                if(!hand_control_locked){
+                    led_flash_timer = INIT_LED_TIME;
+                }
             }
         }
     }else{
         lock_flag = 0;
-        lock_timer = LOCK_HOLD_TIME;
+        //Set required timer hold time
+        if(hand_control_locked){
+            lock_timer = UNLOCK_HOLD_TIME;
+        }else{
+            lock_timer = LOCK_HOLD_TIME;
+        }
     }
-    
-    if(pwm_count){
-        pwm_count--;
+   
+    //handle massage hold timer
+    if(mode_btn_state){
+        if(massage_hold_timer){
+            massage_hold_timer--;
+        }else{
+            massage_power = 0;
+            should_change_mode = 0;
+        }
     }else{
-        pwm_count = PWM_MAX;
+        massage_hold_timer = MASSAGE_HOLD_TIME;
     }
     
+    //handle changes to massage phase, used in wave and pulse functions
     if(phase_change_timer){
         phase_change_timer--;
     }else{
         if(massage_phase >= MASSAGE_PHASE_MAX){
             massage_phase = 0;
-                WavePlaceHolderOn = WaveInOn;
-                WavePlaceHolderOff = WaveInOff;
-                WaveInOn = WaveGap2On;
-                WaveInOff = WaveGap2Off;
-                WaveGap2On = WaveGap1On;
-                WaveGap2Off = WaveGap1Off;
-                WaveGap1On = WaveOutOn;
-                WaveGap1Off = WaveOutOff;
-                WaveOutOn = WavePlaceHolderOn;
-                WaveOutOff = WavePlaceHolderOff;
-                pulse_direction = !pulse_direction;
+            //rotate zone function pointes for the wave function
+            WavePlaceHolderOn = WaveInOn;       //store zone that just ramped up
+            WavePlaceHolderOff = WaveInOff;
+            WaveInOn = WaveGap2On;              //previous Gap2 starts ramping up
+            WaveInOff = WaveGap2Off;
+            WaveGap2On = WaveGap1On;            //previous Gap1 is now Gap2
+            WaveGap2Off = WaveGap1Off;
+            WaveGap1On = WaveOutOn;             //zone that finished ramping down is not Gap1
+            WaveGap1Off = WaveOutOff;
+            WaveOutOn = WavePlaceHolderOn;      //zone that just ramped up starts ramping down
+            WaveOutOff = WavePlaceHolderOff;
+            //change whether pulse is ramping up or down
+            pulse_direction = !pulse_direction;
         }
         massage_phase++;
         phase_change_timer = PHASE_CHANGE_TIME;
-        
-        
+        //calculate massage intensity values
         pulse_wave_in_intensity = massage_intensity*massage_phase/MASSAGE_PHASE_MAX;
         pulse_wave_out_intensity = massage_intensity - pulse_wave_in_intensity;
+        pulse_wave_in_intensity += MIN_MASSAGE_PWM;
+        pulse_wave_out_intensity += MIN_MASSAGE_PWM;
+        steady_massage_intensity = massage_intensity + MIN_MASSAGE_PWM;
     }
-    
-    // add your TMR0 interrupt custom code
 }
 
 
@@ -209,7 +235,7 @@ void TMR0_DefaultInterruptHandler(void){
 }
 
 
-//Functions needed for function pointers
+//Functions pointed to by wave function pointers
 void Z1SetHigh(void){
     ZONE1_OUT_SetHigh();
 }

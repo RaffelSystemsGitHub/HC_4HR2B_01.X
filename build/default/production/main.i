@@ -5425,14 +5425,18 @@ extern void cputs(const char *);
 # 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr0.h" 1
-# 76 "./mcc_generated_files/tmr0.h"
+# 79 "./mcc_generated_files/tmr0.h"
 unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
 unsigned int lock_timer, phase_change_timer;
-__bit lock_btn_state, lock_actuators, lock_flag, pulse_direction;
-unsigned char pwm_count = 50;
-unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, massage_intensity_setting, massage_phase;
+__bit lock_btn_state, hand_control_locked, lock_flag, pulse_direction, should_change_mode, massage_power, mode_btn_state;
+unsigned char pwm_count = 40;
+unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, steady_massage_intensity, massage_phase, massage_mode;
+unsigned char massage_intensity_setting = 1;
 unsigned int second_timer = 1000;
 unsigned int heat1_timer, heat2_timer, massage_timer;
+unsigned int massage_hold_timer = 2000;
+unsigned int led_flash_timer = 500;
+
 
 void Z1SetHigh(void);
 void Z1SetLow(void);
@@ -5454,21 +5458,21 @@ void (*WaveGap1On)(void) = Z4SetHigh;
 void (*WaveGap1Off)(void) = Z4SetLow;
 void (*WaveGap2On)(void) = Z3SetHigh;
 void (*WaveGap2Off)(void) = Z3SetLow;
-# 139 "./mcc_generated_files/tmr0.h"
+# 146 "./mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 170 "./mcc_generated_files/tmr0.h"
+# 177 "./mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 209 "./mcc_generated_files/tmr0.h"
+# 216 "./mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 245 "./mcc_generated_files/tmr0.h"
+# 252 "./mcc_generated_files/tmr0.h"
 void TMR0_Reload(void);
-# 260 "./mcc_generated_files/tmr0.h"
+# 267 "./mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 279 "./mcc_generated_files/tmr0.h"
+# 286 "./mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 297 "./mcc_generated_files/tmr0.h"
+# 304 "./mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 315 "./mcc_generated_files/tmr0.h"
+# 322 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 56 "./mcc_generated_files/mcc.h" 2
 # 71 "./mcc_generated_files/mcc.h"
@@ -5479,8 +5483,6 @@ void OSCILLATOR_Initialize(void);
 void WDT_Initialize(void);
 # 44 "main.c" 2
 
-# 1 "./main.h" 1
-# 45 "main.c" 2
 
 
 
@@ -5492,9 +5494,13 @@ void LEDs(void);
 void Massage(void);
 
 unsigned char lift_open_debounce, lift_close_debounce, back_open_debounce, back_close_debounce, heat1_debounce, heat2_debounce, intensity_debounce, mode_debounce, lock_debounce;
-__bit lift_open_state, lift_close_state, back_open_state, back_close_state, mode_btn_state, intensity_btn_state;
-unsigned char heat1_state, heat2_state, massage_mode;
-# 68 "main.c"
+__bit lift_open_state, lift_close_state, back_open_state, back_close_state, intensity_btn_state;
+unsigned char heat1_state, heat2_state;
+
+
+
+
+
 void main(void)
 {
 
@@ -5505,18 +5511,36 @@ void main(void)
 
 
     (INTCONbits.GIE = 1);
-# 88 "main.c"
-    while (1)
-    {
+# 83 "main.c"
+    while (1){
         Debounce();
         Execute();
         LEDs();
-
     }
 }
 
 
 void Debounce(void){
+
+
+    if(led_flash_timer){
+       return;
+    }
+
+
+    if(!PORTAbits.RA3){
+        if(lock_debounce){
+            lock_debounce--;
+        }else{
+            lock_btn_state = 1;
+            return;
+        }
+    }else{
+        lock_debounce = 30;
+        lock_btn_state = 0;
+    }
+
+
     if(!PORTAbits.RA2){
         if(lift_open_debounce){
             lift_open_debounce--;
@@ -5527,6 +5551,7 @@ void Debounce(void){
         lift_open_debounce = 30;
         lift_open_state = 0;
     }
+
 
     if(!PORTEbits.RE2){
         if(lift_close_debounce){
@@ -5539,6 +5564,7 @@ void Debounce(void){
         lift_close_state = 0;
     }
 
+
     if(!PORTBbits.RB2){
         if(back_open_debounce){
             back_open_debounce--;
@@ -5550,6 +5576,7 @@ void Debounce(void){
         back_open_state = 0;
     }
 
+
     if(!PORTDbits.RD7){
         if(back_close_debounce){
             back_close_debounce--;
@@ -5560,6 +5587,12 @@ void Debounce(void){
         back_close_debounce = 30;
         back_close_state = 0;
     }
+
+
+    if(lift_open_state || lift_close_state || back_open_state || back_close_state){
+        return;
+    }
+
 
     if(!PORTBbits.RB5){
         if(heat1_debounce){
@@ -5575,6 +5608,7 @@ void Debounce(void){
     }else{
         heat1_debounce = 30;
     }
+
     if(!PORTEbits.RE3){
         if(heat2_debounce){
             heat2_debounce--;
@@ -5590,47 +5624,45 @@ void Debounce(void){
         heat2_debounce = 30;
     }
 
-    if(!PORTAbits.RA3){
-        if(lock_debounce){
-            lock_debounce--;
-        }else{
-            lock_btn_state = 1;
-        }
-    }else{
-        lock_debounce = 30;
-        lock_btn_state = 0;
-    }
-
     if(!PORTDbits.RD2){
         if(mode_debounce){
             mode_debounce--;
             if(!mode_debounce){
-                massage_timer = 1200;
+                massage_timer = 1800;
                 mode_btn_state = 1;
-                if(!massage_intensity_setting){
-                    massage_intensity_setting = 1;
+                if(!massage_power){
+                    massage_power = 1;
                 }else{
-                    massage_mode++;
-                    if(massage_mode > 2){
-                        massage_mode = 0;
-                    }
+
+                    should_change_mode = 1;
                 }
             }
         }
     }else{
         mode_btn_state = 0;
         mode_debounce = 30;
+
+        if(should_change_mode){
+            should_change_mode = 0;
+            massage_mode++;
+            if(massage_mode > 2){
+                massage_mode = 0;
+            }
+        }
     }
+
 
     if(!PORTCbits.RC7){
         if(intensity_debounce){
             intensity_debounce--;
             if(!intensity_debounce){
-                massage_timer = 1200;
+                massage_timer = 1800;
                 intensity_btn_state = 1;
-                massage_intensity_setting++;
-                if(massage_intensity_setting > 3){
-                    massage_intensity_setting = 0;
+                if(massage_power){
+                    massage_intensity_setting++;
+                    if(massage_intensity_setting > 2){
+                        massage_intensity_setting = 0;
+                    }
                 }
             }
         }
@@ -5642,51 +5674,82 @@ void Debounce(void){
 
 void Execute(void){
 
-    if(lock_btn_state || lock_actuators || (lift_open_state==lift_close_state)){
+    if(hand_control_locked || led_flash_timer){
         do { LATCbits.LATC1 = 0; } while(0);
         do { LATCbits.LATC0 = 0; } while(0);
-    }else{
-        if(lift_open_state){
-            do { LATCbits.LATC0 = 0; } while(0);
-            if(lift_open_delay){
-                do { LATCbits.LATC1 = 0; } while(0);
-            }else{
-                do { LATCbits.LATC1 = 1; } while(0);
-                lift_close_delay = 200;
-            }
-        }else if(lift_close_state){
-            do { LATCbits.LATC1 = 0; } while(0);
-            if(lift_close_delay){
-                do { LATCbits.LATC0 = 0; } while(0);
-            }else{
-                do { LATCbits.LATC0 = 1; } while(0);
-                lift_open_delay = 200;
-            }
-        }
-    }
-
-    if(lock_btn_state || lock_actuators || (back_open_state==back_close_state)){
         do { LATAbits.LATA6 = 0; } while(0);
         do { LATAbits.LATA7 = 0; } while(0);
-    }else{
-        if(back_open_state){
-            do { LATAbits.LATA7 = 0; } while(0);
-            if(back_open_delay){
-                do { LATAbits.LATA6 = 0; } while(0);
-            }else{
-                do { LATAbits.LATA6 = 1; } while(0);
-                back_close_delay = 200;
-            }
-        }else if(back_close_state){
-            do { LATAbits.LATA6 = 0; } while(0);
-            if(back_close_delay){
-                do { LATAbits.LATA7 = 0; } while(0);
-            }else{
-                do { LATAbits.LATA7 = 1; } while(0);
-                back_open_delay = 200;
-            }
-        }
+        heat1_state = 0;
+        heat2_state = 0;
+        do { LATCbits.LATC6 = 0; } while(0);
+        do { LATCbits.LATC5 = 0; } while(0);
+        do { LATCbits.LATC4 = 0; } while(0);
+        do { LATDbits.LATD3 = 0; } while(0);
+        do { LATCbits.LATC3 = 0; } while(0);
+        do { LATCbits.LATC2 = 0; } while(0);
+        massage_mode = 0;
+        massage_intensity_setting = 1;
+        massage_power = 0;
+        return;
     }
+
+
+
+
+
+    if(lift_open_state && !(lift_close_state || back_open_state || back_close_state || lock_btn_state)){
+        if(lift_open_delay){
+            do { LATCbits.LATC1 = 0; } while(0);
+        }else{
+            do { LATCbits.LATC1 = 1; } while(0);
+            lift_close_delay = 200;
+        }
+        do { LATCbits.LATC0 = 0; } while(0);
+        do { LATAbits.LATA6 = 0; } while(0);
+        do { LATAbits.LATA7 = 0; } while(0);
+    }else if(lift_close_state && !(lift_open_state || back_open_state || back_close_state || lock_btn_state)){
+        if(lift_close_delay){
+            do { LATCbits.LATC0 = 0; } while(0);
+        }else{
+            do { LATCbits.LATC0 = 1; } while(0);
+            lift_open_delay = 200;
+        }
+        do { LATCbits.LATC1 = 0; } while(0);
+        do { LATAbits.LATA6 = 0; } while(0);
+        do { LATAbits.LATA7 = 0; } while(0);
+    }else if(back_open_state && !(lift_open_state || lift_close_state || back_close_state || lock_btn_state)){
+        if(back_open_delay){
+            do { LATAbits.LATA6 = 0; } while(0);
+        }else{
+            do { LATAbits.LATA6 = 1; } while(0);
+            back_close_delay = 200;
+        }
+        do { LATCbits.LATC1 = 0; } while(0);
+        do { LATCbits.LATC0 = 0; } while(0);
+        do { LATAbits.LATA7 = 0; } while(0);
+    }else if(back_close_state && !(lift_open_state || lift_close_state || back_open_state || lock_btn_state)){
+        if(back_close_delay){
+            do { LATAbits.LATA7 = 0; } while(0);
+        }else{
+            do { LATAbits.LATA7 = 1; } while(0);
+            back_open_delay = 200;
+        }
+        do { LATCbits.LATC1 = 0; } while(0);
+        do { LATCbits.LATC0 = 0; } while(0);
+        do { LATAbits.LATA6 = 0; } while(0);
+    }else{
+        do { LATCbits.LATC1 = 0; } while(0);
+        do { LATCbits.LATC0 = 0; } while(0);
+        do { LATAbits.LATA6 = 0; } while(0);
+        do { LATAbits.LATA7 = 0; } while(0);
+    }
+
+    if(pwm_count){
+        pwm_count--;
+    }else{
+        pwm_count = 40;
+    }
+
 
     if(!heat1_timer){
         heat1_state = 0;
@@ -5694,25 +5757,27 @@ void Execute(void){
     if(!heat2_timer){
         heat2_state = 0;
     }
-    if(PORTCbits.RC1 || PORTCbits.RC0 || PORTAbits.RA6 || PORTAbits.RA7){
+
+
+    if(lift_open_state || lift_close_state || back_open_state || back_close_state){
         do { LATCbits.LATC6 = 0; } while(0);
         do { LATCbits.LATC5 = 0; } while(0);
     }else{
-        if(pwm_count <= 50/4){
+        if(pwm_count <= 40/4){
             do { LATCbits.LATC5 = 0; } while(0);
             if(heat1_state){
                 do { LATCbits.LATC6 = 1; } while(0);
             }else{
                 do { LATCbits.LATC6 = 0; } while(0);
             }
-        }else if(pwm_count <= 50/2){
+        }else if(pwm_count <= 40/2){
             do { LATCbits.LATC5 = 0; } while(0);
-            if(heat1_state == 1){
+            if(heat1_state == 2){
                 do { LATCbits.LATC6 = 1; } while(0);
             }else{
                 do { LATCbits.LATC6 = 0; } while(0);
             }
-        }else if(pwm_count <= 50*3/4){
+        }else if(pwm_count <= 40*3/4){
             do { LATCbits.LATC6 = 0; } while(0);
             if(heat2_state){
                 do { LATCbits.LATC5 = 1; } while(0);
@@ -5721,136 +5786,220 @@ void Execute(void){
             }
         }else{
             do { LATCbits.LATC6 = 0; } while(0);
-            if(heat2_state == 1){
+            if(heat2_state == 2){
                 do { LATCbits.LATC5 = 1; } while(0);
             }else{
                 do { LATCbits.LATC5 = 0; } while(0);
             }
         }
     }
-    switch(massage_intensity_setting){
-        case 0:
-            massage_intensity = 0;
-            break;
-        case 1:
-            massage_intensity = 50*30/100;
-            break;
-        case 2:
-            massage_intensity = 50*50/100;
-            break;
-        case 3:
-            massage_intensity = 50*70/100;
-            break;
-    }
+
+
     Massage();
 }
 
 void LEDs(void){
-    if(lock_actuators){
+
+    if(led_flash_timer){
         do { LATEbits.LATE1 = 0; } while(0);
-    }else{
-        do { LATEbits.LATE1 = 1; } while(0);
-    }
-    if(PORTCbits.RC1 || PORTCbits.RC0){
+
         do { LATAbits.LATA4 = 0; } while(0);
-    }else{
-        do { LATAbits.LATA4 = 1; } while(0);
-    }
-
-    if(PORTAbits.RA6 || PORTAbits.RA7){
         do { LATBbits.LATB1 = 0; } while(0);
-    }else{
+
+        do { LATBbits.LATB4 = 0; } while(0);
+        do { LATBbits.LATB3 = 0; } while(0);
+
+        do { LATAbits.LATA0 = 0; } while(0);
+        do { LATAbits.LATA1 = 0; } while(0);
+
+        do { LATDbits.LATD6 = 0; } while(0);
+        do { LATDbits.LATD1 = 0; } while(0);
+        do { LATEbits.LATE0 = 0; } while(0);
+        do { LATDbits.LATD5 = 0; } while(0);
+        do { LATDbits.LATD0 = 0; } while(0);
+        do { LATAbits.LATA5 = 0; } while(0);
+
+        do { LATBbits.LATB0 = 1; } while(0);
+        do { LATDbits.LATD4 = 1; } while(0);
+        return;
+    }
+
+
+    if(hand_control_locked){
+        do { LATEbits.LATE1 = 0; } while(0);
+
+        do { LATAbits.LATA4 = 1; } while(0);
         do { LATBbits.LATB1 = 1; } while(0);
-    }
 
-    switch(heat1_state){
-        case 1:
-            do { LATBbits.LATB4 = 0; } while(0);
-            do { LATBbits.LATB3 = 1; } while(0);
-            break;
-        case 2:
-            do { LATBbits.LATB4 = 0; } while(0);
-            do { LATBbits.LATB3 = 0; } while(0);
-            break;
-        default:
-            do { LATBbits.LATB4 = 1; } while(0);
-            do { LATBbits.LATB3 = 1; } while(0);
-            break;
-    }
+        do { LATBbits.LATB4 = 1; } while(0);
+        do { LATBbits.LATB3 = 1; } while(0);
 
-    switch(heat2_state){
-        case 1:
-            do { LATAbits.LATA0 = 0; } while(0);
-            do { LATAbits.LATA1 = 1; } while(0);
-            break;
-        case 2:
-            do { LATAbits.LATA0 = 0; } while(0);
-            do { LATAbits.LATA1 = 0; } while(0);
-            break;
-        default:
-            do { LATAbits.LATA0 = 1; } while(0);
-            do { LATAbits.LATA1 = 1; } while(0);
-            break;
-    }
+        do { LATAbits.LATA0 = 1; } while(0);
+        do { LATAbits.LATA1 = 1; } while(0);
 
-    if(massage_intensity_setting){
-
-        switch(massage_mode){
-            case 0:
-                do { LATDbits.LATD6 = 0; } while(0);
-                do { LATDbits.LATD1 = 1; } while(0);
-                do { LATEbits.LATE0 = 1; } while(0);
-                break;
-            case 1:
-                do { LATDbits.LATD6 = 1; } while(0);
-                do { LATDbits.LATD1 = 0; } while(0);
-                do { LATEbits.LATE0 = 1; } while(0);
-                break;
-            case 2:
-                do { LATDbits.LATD6 = 1; } while(0);
-                do { LATDbits.LATD1 = 1; } while(0);
-                do { LATEbits.LATE0 = 0; } while(0);
-                break;
-            default:
-                break;
-        }
-        switch(massage_intensity_setting){
-            case 1:
-                do { LATDbits.LATD5 = 0; } while(0);
-                do { LATDbits.LATD0 = 1; } while(0);
-                do { LATAbits.LATA5 = 1; } while(0);
-                break;
-            case 2:
-                do { LATDbits.LATD5 = 1; } while(0);
-                do { LATDbits.LATD0 = 0; } while(0);
-                do { LATAbits.LATA5 = 1; } while(0);
-                break;
-            case 3:
-                do { LATDbits.LATD5 = 1; } while(0);
-                do { LATDbits.LATD0 = 1; } while(0);
-                do { LATAbits.LATA5 = 0; } while(0);
-                break;
-            default:
-                break;
-        }
-    }else{
         do { LATDbits.LATD6 = 1; } while(0);
         do { LATDbits.LATD1 = 1; } while(0);
         do { LATEbits.LATE0 = 1; } while(0);
         do { LATDbits.LATD5 = 1; } while(0);
         do { LATDbits.LATD0 = 1; } while(0);
         do { LATAbits.LATA5 = 1; } while(0);
+
+        do { LATBbits.LATB0 = 0; } while(0);
+        do { LATDbits.LATD4 = 0; } while(0);
+        return;
+    }
+
+    do { LATEbits.LATE1 = 1; } while(0);
+
+
+    if(lift_open_state || lift_close_state || back_open_state || back_close_state){
+
+        do { LATBbits.LATB4 = 1; } while(0);
+        do { LATBbits.LATB3 = 1; } while(0);
+
+        do { LATAbits.LATA0 = 1; } while(0);
+        do { LATAbits.LATA1 = 1; } while(0);
+
+        do { LATDbits.LATD6 = 1; } while(0);
+        do { LATDbits.LATD1 = 1; } while(0);
+        do { LATEbits.LATE0 = 1; } while(0);
+        do { LATDbits.LATD5 = 1; } while(0);
+        do { LATDbits.LATD0 = 1; } while(0);
+        do { LATAbits.LATA5 = 1; } while(0);
+
+        do { LATBbits.LATB0 = 0; } while(0);
+        do { LATDbits.LATD4 = 0; } while(0);
+
+
+        if(PORTCbits.RC1 || PORTCbits.RC0){
+            do { LATAbits.LATA4 = 0; } while(0);
+        }else{
+            do { LATAbits.LATA4 = 1; } while(0);
+        }
+
+        if(PORTAbits.RA6 || PORTAbits.RA7){
+            do { LATBbits.LATB1 = 0; } while(0);
+        }else{
+            do { LATBbits.LATB1 = 1; } while(0);
+        }
+    }else{
+
+        do { LATAbits.LATA4 = 1; } while(0);
+        do { LATBbits.LATB1 = 1; } while(0);
+
+
+        switch(heat1_state){
+            case 1:
+                do { LATBbits.LATB4 = 1; } while(0);
+                do { LATBbits.LATB3 = 0; } while(0);
+                break;
+            case 2:
+                do { LATBbits.LATB4 = 0; } while(0);
+                do { LATBbits.LATB3 = 1; } while(0);
+                break;
+            default:
+                do { LATBbits.LATB4 = 1; } while(0);
+                do { LATBbits.LATB3 = 1; } while(0);
+                break;
+        }
+
+        switch(heat2_state){
+            case 1:
+                do { LATAbits.LATA0 = 1; } while(0);
+                do { LATAbits.LATA1 = 0; } while(0);
+                break;
+            case 2:
+                do { LATAbits.LATA0 = 0; } while(0);
+                do { LATAbits.LATA1 = 1; } while(0);
+                break;
+            default:
+                do { LATAbits.LATA0 = 1; } while(0);
+                do { LATAbits.LATA1 = 1; } while(0);
+                break;
+        }
+
+
+        if(massage_power){
+
+            do { LATBbits.LATB0 = 1; } while(0);
+            do { LATDbits.LATD4 = 1; } while(0);
+
+            switch(massage_mode){
+                case 0:
+                    do { LATDbits.LATD6 = 0; } while(0);
+                    do { LATDbits.LATD1 = 1; } while(0);
+                    do { LATEbits.LATE0 = 1; } while(0);
+                    break;
+                case 1:
+                    do { LATDbits.LATD6 = 1; } while(0);
+                    do { LATDbits.LATD1 = 0; } while(0);
+                    do { LATEbits.LATE0 = 1; } while(0);
+                    break;
+                case 2:
+                    do { LATDbits.LATD6 = 1; } while(0);
+                    do { LATDbits.LATD1 = 1; } while(0);
+                    do { LATEbits.LATE0 = 0; } while(0);
+                    break;
+                default:
+                    break;
+            }
+            switch(massage_intensity_setting){
+                case 0:
+                    do { LATDbits.LATD5 = 0; } while(0);
+                    do { LATDbits.LATD0 = 1; } while(0);
+                    do { LATAbits.LATA5 = 1; } while(0);
+                    break;
+                case 1:
+                    do { LATDbits.LATD5 = 1; } while(0);
+                    do { LATDbits.LATD0 = 0; } while(0);
+                    do { LATAbits.LATA5 = 1; } while(0);
+                    break;
+                case 2:
+                    do { LATDbits.LATD5 = 1; } while(0);
+                    do { LATDbits.LATD0 = 1; } while(0);
+                    do { LATAbits.LATA5 = 0; } while(0);
+                    break;
+                default:
+                    break;
+            }
+        }else{
+
+            do { LATDbits.LATD6 = 1; } while(0);
+            do { LATDbits.LATD1 = 1; } while(0);
+            do { LATEbits.LATE0 = 1; } while(0);
+            do { LATDbits.LATD5 = 1; } while(0);
+            do { LATDbits.LATD0 = 1; } while(0);
+            do { LATAbits.LATA5 = 1; } while(0);
+            do { LATBbits.LATB0 = 0; } while(0);
+            do { LATDbits.LATD4 = 0; } while(0);
+        }
     }
 }
 
 void Massage(void){
+
     if(!massage_timer){
-        massage_intensity_setting = 0;
+        massage_power = 0;
     }
-    if(massage_intensity_setting && PORTAbits.RA4){
+
+    if(massage_power && !(lift_open_state || lift_close_state || back_open_state || back_close_state)){
+
+        switch(massage_intensity_setting){
+            case 0:
+                massage_intensity = (40*20/100) - 40/10;
+                break;
+            case 1:
+                massage_intensity = (40*30/100) - 40/10;
+                break;
+            case 2:
+                massage_intensity = (40*40/100) - 40/10;
+                break;
+        }
+
         switch(massage_mode){
             case 0:
-                if(massage_intensity > pwm_count){
+
+                if(steady_massage_intensity > pwm_count){
                     do { LATCbits.LATC4 = 1; } while(0);
                     do { LATDbits.LATD3 = 1; } while(0);
                     do { LATCbits.LATC3 = 1; } while(0);
@@ -5863,18 +6012,26 @@ void Massage(void){
                 }
                 break;
             case 1:
+
+
                 if(pulse_wave_in_intensity > pwm_count){
                     WaveInOn();
-                    WaveOutOff();
                 }else{
                     WaveInOff();
-                    WaveOutOn();
                 }
+
+                if(pulse_wave_out_intensity > pwm_count){
+                    WaveOutOn();
+                }else{
+                    WaveOutOff();
+                }
+
                 WaveGap1Off();
                 WaveGap2Off();
                 break;
             case 2:
                 if(pulse_direction){
+
                     if(pulse_wave_in_intensity > pwm_count){
                         do { LATCbits.LATC4 = 1; } while(0);
                         do { LATDbits.LATD3 = 1; } while(0);
@@ -5887,6 +6044,7 @@ void Massage(void){
                         do { LATCbits.LATC2 = 0; } while(0);
                     }
                 }else{
+
                     if(pulse_wave_out_intensity > pwm_count){
                         do { LATCbits.LATC4 = 1; } while(0);
                         do { LATDbits.LATD3 = 1; } while(0);
@@ -5902,13 +6060,12 @@ void Massage(void){
 
                 break;
             default:
-                do { LATCbits.LATC4 = 0; } while(0);
-                do { LATDbits.LATD3 = 0; } while(0);
-                do { LATCbits.LATC3 = 0; } while(0);
-                do { LATCbits.LATC2 = 0; } while(0);
+
+                massage_mode = 0;
                 break;
         }
     }else{
+
         do { LATCbits.LATC4 = 0; } while(0);
         do { LATDbits.LATD3 = 0; } while(0);
         do { LATCbits.LATC3 = 0; } while(0);

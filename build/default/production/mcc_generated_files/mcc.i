@@ -5425,14 +5425,18 @@ extern void cputs(const char *);
 # 55 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr0.h" 1
-# 76 "mcc_generated_files/tmr0.h"
+# 79 "mcc_generated_files/tmr0.h"
 unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
 unsigned int lock_timer, phase_change_timer;
-__bit lock_btn_state, lock_actuators, lock_flag, pulse_direction;
-unsigned char pwm_count = 50;
-unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, massage_intensity_setting, massage_phase;
+__bit lock_btn_state, hand_control_locked, lock_flag, pulse_direction, should_change_mode, massage_power, mode_btn_state;
+unsigned char pwm_count = 40;
+unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, steady_massage_intensity, massage_phase, massage_mode;
+unsigned char massage_intensity_setting = 1;
 unsigned int second_timer = 1000;
 unsigned int heat1_timer, heat2_timer, massage_timer;
+unsigned int massage_hold_timer = 2000;
+unsigned int led_flash_timer = 500;
+
 
 void Z1SetHigh(void);
 void Z1SetLow(void);
@@ -5454,21 +5458,21 @@ void (*WaveGap1On)(void) = Z4SetHigh;
 void (*WaveGap1Off)(void) = Z4SetLow;
 void (*WaveGap2On)(void) = Z3SetHigh;
 void (*WaveGap2Off)(void) = Z3SetLow;
-# 139 "mcc_generated_files/tmr0.h"
+# 146 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 170 "mcc_generated_files/tmr0.h"
+# 177 "mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 209 "mcc_generated_files/tmr0.h"
+# 216 "mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 245 "mcc_generated_files/tmr0.h"
+# 252 "mcc_generated_files/tmr0.h"
 void TMR0_Reload(void);
-# 260 "mcc_generated_files/tmr0.h"
+# 267 "mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 279 "mcc_generated_files/tmr0.h"
+# 286 "mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 297 "mcc_generated_files/tmr0.h"
+# 304 "mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 315 "mcc_generated_files/tmr0.h"
+# 322 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 56 "mcc_generated_files/mcc.h" 2
 # 71 "mcc_generated_files/mcc.h"

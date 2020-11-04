@@ -15,15 +15,15 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"68 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
+"63 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"98
+"91
 [v _Debounce Debounce `(v  1 e 1 0 ]
-"222
+"243
 [v _Execute Execute `(v  1 e 1 0 ]
-"327
+"369
 [v _LEDs LEDs `(v  1 e 1 0 ]
-"425
+"547
 [v _Massage Massage `(v  1 e 1 0 ]
 "52 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
@@ -35,76 +35,86 @@
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 "55 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"67 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
+"68 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
-"111
+"112
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
-"202
+"228
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
-"206
+"232
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"213
+"239
 [v _Z1SetHigh Z1SetHigh `(v  1 e 1 0 ]
-"217
+"243
 [v _Z1SetLow Z1SetLow `(v  1 e 1 0 ]
-"221
+"247
 [v _Z2SetHigh Z2SetHigh `(v  1 e 1 0 ]
-"225
+"251
 [v _Z2SetLow Z2SetLow `(v  1 e 1 0 ]
-"229
+"255
 [v _Z3SetHigh Z3SetHigh `(v  1 e 1 0 ]
-"233
+"259
 [v _Z3SetLow Z3SetLow `(v  1 e 1 0 ]
-"237
+"263
 [v _Z4SetHigh Z4SetHigh `(v  1 e 1 0 ]
-"241
+"267
 [v _Z4SetLow Z4SetLow `(v  1 e 1 0 ]
-"76 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X/mcc_generated_files/tmr0.h
+"79 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X/mcc_generated_files/tmr0.h
 [v _lift_open_delay lift_open_delay `uc  1 e 1 0 ]
 [v _lift_close_delay lift_close_delay `uc  1 e 1 0 ]
 [v _back_open_delay back_open_delay `uc  1 e 1 0 ]
 [v _back_close_delay back_close_delay `uc  1 e 1 0 ]
-"77
+"80
 [v _lock_timer lock_timer `ui  1 e 2 0 ]
 [v _phase_change_timer phase_change_timer `ui  1 e 2 0 ]
-"78
+"81
 [v _lock_btn_state lock_btn_state `b  1 e 0 0 ]
-[v _lock_actuators lock_actuators `b  1 e 0 0 ]
+[v _hand_control_locked hand_control_locked `b  1 e 0 0 ]
 [v _lock_flag lock_flag `b  1 e 0 0 ]
 [v _pulse_direction pulse_direction `b  1 e 0 0 ]
-"79
+[v _should_change_mode should_change_mode `b  1 e 0 0 ]
+[v _massage_power massage_power `b  1 e 0 0 ]
+[v _mode_btn_state mode_btn_state `b  1 e 0 0 ]
+"82
 [v _pwm_count pwm_count `uc  1 e 1 0 ]
-"80
+"83
 [v _massage_intensity massage_intensity `uc  1 e 1 0 ]
 [v _pulse_wave_in_intensity pulse_wave_in_intensity `uc  1 e 1 0 ]
 [v _pulse_wave_out_intensity pulse_wave_out_intensity `uc  1 e 1 0 ]
-[v _massage_intensity_setting massage_intensity_setting `uc  1 e 1 0 ]
+[v _steady_massage_intensity steady_massage_intensity `uc  1 e 1 0 ]
 [v _massage_phase massage_phase `uc  1 e 1 0 ]
-"81
+[v _massage_mode massage_mode `uc  1 e 1 0 ]
+"84
+[v _massage_intensity_setting massage_intensity_setting `uc  1 e 1 0 ]
+"85
 [v _second_timer second_timer `ui  1 e 2 0 ]
-"82
+"86
 [v _heat1_timer heat1_timer `ui  1 e 2 0 ]
 [v _heat2_timer heat2_timer `ui  1 e 2 0 ]
 [v _massage_timer massage_timer `ui  1 e 2 0 ]
-"94
-[v _WavePlaceHolderOn WavePlaceHolderOn `*.37(v  1 e 2 0 ]
-"95
-[v _WavePlaceHolderOff WavePlaceHolderOff `*.37(v  1 e 2 0 ]
-"96
-[v _WaveInOn WaveInOn `*.37(v  1 e 2 0 ]
-"97
-[v _WaveInOff WaveInOff `*.37(v  1 e 2 0 ]
-"98
-[v _WaveOutOn WaveOutOn `*.37(v  1 e 2 0 ]
-"99
-[v _WaveOutOff WaveOutOff `*.37(v  1 e 2 0 ]
-"100
-[v _WaveGap1On WaveGap1On `*.37(v  1 e 2 0 ]
+"87
+[v _massage_hold_timer massage_hold_timer `ui  1 e 2 0 ]
+"88
+[v _led_flash_timer led_flash_timer `ui  1 e 2 0 ]
 "101
-[v _WaveGap1Off WaveGap1Off `*.37(v  1 e 2 0 ]
+[v _WavePlaceHolderOn WavePlaceHolderOn `*.37(v  1 e 2 0 ]
 "102
-[v _WaveGap2On WaveGap2On `*.37(v  1 e 2 0 ]
+[v _WavePlaceHolderOff WavePlaceHolderOff `*.37(v  1 e 2 0 ]
 "103
+[v _WaveInOn WaveInOn `*.37(v  1 e 2 0 ]
+"104
+[v _WaveInOff WaveInOff `*.37(v  1 e 2 0 ]
+"105
+[v _WaveOutOn WaveOutOn `*.37(v  1 e 2 0 ]
+"106
+[v _WaveOutOff WaveOutOff `*.37(v  1 e 2 0 ]
+"107
+[v _WaveGap1On WaveGap1On `*.37(v  1 e 2 0 ]
+"108
+[v _WaveGap1Off WaveGap1Off `*.37(v  1 e 2 0 ]
+"109
+[v _WaveGap2On WaveGap2On `*.37(v  1 e 2 0 ]
+"110
 [v _WaveGap2Off WaveGap2Off `*.37(v  1 e 2 0 ]
 [s S67 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -123,7 +133,7 @@
 ]
 [u S81 . 1 `S67 1 . 1 0 `S76 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES81  1 e 1 @11 ]
-[s S486 . 1 `uc 1 RA0 1 0 :1:0 
+[s S507 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -133,9 +143,9 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "446
-[u S495 . 1 `S486 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES495  1 e 1 @12 ]
-[s S520 . 1 `uc 1 RB0 1 0 :1:0 
+[u S516 . 1 `S507 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES516  1 e 1 @12 ]
+[s S541 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -145,9 +155,9 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "508
-[u S529 . 1 `S520 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES529  1 e 1 @13 ]
-[s S562 . 1 `uc 1 RC0 1 0 :1:0 
+[u S550 . 1 `S541 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES550  1 e 1 @13 ]
+[s S583 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -157,9 +167,9 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "570
-[u S571 . 1 `S562 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES571  1 e 1 @14 ]
-[s S541 . 1 `uc 1 RD0 1 0 :1:0 
+[u S592 . 1 `S583 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES592  1 e 1 @14 ]
+[s S562 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -169,16 +179,16 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "632
-[u S550 . 1 `S541 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES550  1 e 1 @15 ]
-[s S507 . 1 `uc 1 RE0 1 0 :1:0 
+[u S571 . 1 `S562 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES571  1 e 1 @15 ]
+[s S528 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "690
-[u S512 . 1 `S507 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES512  1 e 1 @16 ]
+[u S533 . 1 `S528 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES533  1 e 1 @16 ]
 "880
 [v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
 "1307
@@ -193,7 +203,7 @@
 [v _TRISE TRISE `VEuc  1 e 1 @144 ]
 "1758
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-[s S254 . 1 `uc 1 PS0 1 0 :1:0 
+[s S261 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 PSA 1 0 :1:3 
@@ -203,13 +213,13 @@
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1781
-[s S263 . 1 `uc 1 PS 1 0 :3:0 
+[s S270 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S268 . 1 `S254 1 . 1 0 `S263 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES268  1 e 1 @149 ]
+[u S275 . 1 `S261 1 . 1 0 `S270 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES275  1 e 1 @149 ]
 "1892
 [v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
 "1951
@@ -218,7 +228,7 @@
 [v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
 "2351
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-[s S595 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S616 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -228,11 +238,11 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "2368
-[u S604 . 1 `S595 1 . 1 0 ]
-[v _LATAbits LATAbits `VES604  1 e 1 @268 ]
+[u S625 . 1 `S616 1 . 1 0 ]
+[v _LATAbits LATAbits `VES625  1 e 1 @268 ]
 "2413
 [v _LATB LATB `VEuc  1 e 1 @269 ]
-[s S633 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S669 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -242,8 +252,8 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "2430
-[u S642 . 1 `S633 1 . 1 0 ]
-[v _LATBbits LATBbits `VES642  1 e 1 @269 ]
+[u S678 . 1 `S669 1 . 1 0 ]
+[v _LATBbits LATBbits `VES678  1 e 1 @269 ]
 "2475
 [v _LATC LATC `VEuc  1 e 1 @270 ]
 [s S112 . 1 `uc 1 LATC0 1 0 :1:0 
@@ -276,14 +286,14 @@
 [v _LATDbits LATDbits `VES144  1 e 1 @271 ]
 "2607
 [v _LATE LATE `VEuc  1 e 1 @272 ]
-[s S620 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S656 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 `uc 1 LATE3 1 0 :1:3 
 ]
 "2620
-[u S625 . 1 `S620 1 . 1 0 ]
-[v _LATEbits LATEbits `VES625  1 e 1 @272 ]
+[u S661 . 1 `S656 1 . 1 0 ]
+[v _LATEbits LATEbits `VES661  1 e 1 @272 ]
 "2917
 [v _BORCON BORCON `VEuc  1 e 1 @278 ]
 "3266
@@ -315,20 +325,18 @@
 [v _lift_close_state lift_close_state `b  1 e 0 0 ]
 [v _back_open_state back_open_state `b  1 e 0 0 ]
 [v _back_close_state back_close_state `b  1 e 0 0 ]
-[v _mode_btn_state mode_btn_state `b  1 e 0 0 ]
 [v _intensity_btn_state intensity_btn_state `b  1 e 0 0 ]
 "57
 [v _heat1_state heat1_state `uc  1 e 1 0 ]
 [v _heat2_state heat2_state `uc  1 e 1 0 ]
-[v _massage_mode massage_mode `uc  1 e 1 0 ]
-"61 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
+"62 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
 [v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
-"62
+"63
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"68 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
+"63 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"95
+"88
 } 0
 "50 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -340,16 +348,16 @@
 {
 "73
 } 0
-"67 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
+"68 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
-"88
+"89
 } 0
-"202
+"228
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
-[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 9 ]
-"204
+[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
+"230
 } 0
 "55 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -361,75 +369,75 @@
 {
 "67
 } 0
-"327 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
+"369 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 [v _LEDs LEDs `(v  1 e 1 0 ]
 {
-"423
+"545
 } 0
-"222
+"243
 [v _Execute Execute `(v  1 e 1 0 ]
 {
-"325
+"367
 } 0
-"425
+"547
 [v _Massage Massage `(v  1 e 1 0 ]
 {
-"496
+"642
 } 0
-"233 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
+"259 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
 [v _Z3SetLow Z3SetLow `(v  1 e 1 0 ]
 {
-"235
+"261
 } 0
-"217
+"243
 [v _Z1SetLow Z1SetLow `(v  1 e 1 0 ]
 {
-"219
+"245
 } 0
-"225
+"251
 [v _Z2SetLow Z2SetLow `(v  1 e 1 0 ]
 {
-"227
+"253
 } 0
-"241
+"267
 [v _Z4SetLow Z4SetLow `(v  1 e 1 0 ]
 {
-"243
+"269
 } 0
-"229
+"255
 [v _Z3SetHigh Z3SetHigh `(v  1 e 1 0 ]
 {
-"231
+"257
 } 0
-"213
+"239
 [v _Z1SetHigh Z1SetHigh `(v  1 e 1 0 ]
 {
-"215
+"241
 } 0
-"221
+"247
 [v _Z2SetHigh Z2SetHigh `(v  1 e 1 0 ]
 {
-"223
+"249
 } 0
-"237
+"263
 [v _Z4SetHigh Z4SetHigh `(v  1 e 1 0 ]
 {
-"239
+"265
 } 0
-"98 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
+"91 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 [v _Debounce Debounce `(v  1 e 1 0 ]
 {
-"220
+"241
 } 0
 "52 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "63
 } 0
-"111 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
+"112 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
-"199
+"225
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -454,8 +462,8 @@
 [v ___awdiv@dividend dividend `i  1 p 2 8 ]
 "41
 } 0
-"206 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
+"232 C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/tmr0.c
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
-"209
+"235
 } 0

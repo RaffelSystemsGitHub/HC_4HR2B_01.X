@@ -60,27 +60,34 @@
 
 #endif
         
-#define PWM_MAX             50
-#define MASSAGE_LOW_PWM     PWM_MAX*30/100
-#define MASSAGE_MED_PWM     PWM_MAX*50/100
-#define MASSAGE_HIGH_PWM    PWM_MAX*70/100
+#define PWM_MAX             40   
+#define MIN_MASSAGE_PWM     PWM_MAX/10
+#define MASSAGE_LOW_PWM     (PWM_MAX*20/100) - MIN_MASSAGE_PWM
+#define MASSAGE_MED_PWM     (PWM_MAX*30/100) - MIN_MASSAGE_PWM
+#define MASSAGE_HIGH_PWM    (PWM_MAX*40/100) - MIN_MASSAGE_PWM
 #define HEAT_PHASE_1        PWM_MAX/4
 #define HEAT_PHASE_2        PWM_MAX/2
 #define HEAT_PHASE_3        PWM_MAX*3/4
 #define PHASE_CHANGE_TIME   100
-#define MASSAGE_PHASE_MAX   11
+#define MASSAGE_PHASE_MAX   20
 #define SECOND_COUNTS       1000
 #define HEAT_TIMEOUT        1800
-#define MASSAGE_TIMEOUT     1200
+#define MASSAGE_TIMEOUT     1800
+#define MASSAGE_HOLD_TIME   2000
+#define INIT_LED_TIME       500
         
-unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;        
-unsigned int lock_timer, phase_change_timer;     
-__bit lock_btn_state, lock_actuators, lock_flag, pulse_direction; 
+unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
+unsigned int lock_timer, phase_change_timer;
+__bit lock_btn_state, hand_control_locked, lock_flag, pulse_direction, should_change_mode, massage_power, mode_btn_state;
 unsigned char pwm_count = PWM_MAX;
-unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, massage_intensity_setting, massage_phase;
+unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, steady_massage_intensity, massage_phase, massage_mode;
+unsigned char massage_intensity_setting = 1;
 unsigned int second_timer = SECOND_COUNTS;
 unsigned int heat1_timer, heat2_timer, massage_timer;
+unsigned int massage_hold_timer = MASSAGE_HOLD_TIME;    //timer to turn off massage when massage button is held
+unsigned int led_flash_timer  = INIT_LED_TIME;           //timer to turn off all outputs and light all LEDs during start-up and after not locking
 
+//function prototypes for zone control
 void Z1SetHigh(void);
 void Z1SetLow(void);
 void Z2SetHigh(void);
@@ -90,16 +97,16 @@ void Z3SetLow(void);
 void Z4SetHigh(void);
 void Z4SetLow(void);
 
-
-void (*WavePlaceHolderOn)(void) = Z4SetHigh;
-void (*WavePlaceHolderOff)(void) = Z4SetLow;
-void (*WaveInOn)(void) = Z2SetHigh;
+//Function pointers to make massage wave function elegant
+void (*WavePlaceHolderOn)(void) = Z4SetHigh;    //Placeholders needed when rotating zones
+void (*WavePlaceHolderOff)(void) = Z4SetLow;    
+void (*WaveInOn)(void) = Z2SetHigh;             //WaveIn initialized to zone2. Wave in ramps up
 void (*WaveInOff)(void) = Z2SetLow;
-void (*WaveOutOn)(void) = Z1SetHigh;
+void (*WaveOutOn)(void) = Z1SetHigh;            //WaveOut initialized to zone1. Wave out ramps down
 void (*WaveOutOff)(void) = Z1SetLow;
-void (*WaveGap1On)(void) = Z4SetHigh;
+void (*WaveGap1On)(void) = Z4SetHigh;           //Gap1 initialized to zone 4. Gaps are off
 void (*WaveGap1Off)(void) = Z4SetLow;
-void (*WaveGap2On)(void) = Z3SetHigh;
+void (*WaveGap2On)(void) = Z3SetHigh;           //Gap2 initialized to zone 3. Gaps are off
 void (*WaveGap2Off)(void) = Z3SetLow;
 /**
   Section: TMR0 APIs

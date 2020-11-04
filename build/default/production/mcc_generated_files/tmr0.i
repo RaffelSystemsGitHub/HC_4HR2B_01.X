@@ -5377,14 +5377,18 @@ typedef uint32_t uint_fast32_t;
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdbool.h" 1 3
 # 55 "mcc_generated_files/tmr0.h" 2
-# 76 "mcc_generated_files/tmr0.h"
+# 79 "mcc_generated_files/tmr0.h"
 unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
 unsigned int lock_timer, phase_change_timer;
-__bit lock_btn_state, lock_actuators, lock_flag, pulse_direction;
-unsigned char pwm_count = 50;
-unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, massage_intensity_setting, massage_phase;
+__bit lock_btn_state, hand_control_locked, lock_flag, pulse_direction, should_change_mode, massage_power, mode_btn_state;
+unsigned char pwm_count = 40;
+unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, steady_massage_intensity, massage_phase, massage_mode;
+unsigned char massage_intensity_setting = 1;
 unsigned int second_timer = 1000;
 unsigned int heat1_timer, heat2_timer, massage_timer;
+unsigned int massage_hold_timer = 2000;
+unsigned int led_flash_timer = 500;
+
 
 void Z1SetHigh(void);
 void Z1SetLow(void);
@@ -5406,21 +5410,21 @@ void (*WaveGap1On)(void) = Z4SetHigh;
 void (*WaveGap1Off)(void) = Z4SetLow;
 void (*WaveGap2On)(void) = Z3SetHigh;
 void (*WaveGap2Off)(void) = Z3SetLow;
-# 139 "mcc_generated_files/tmr0.h"
+# 146 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 170 "mcc_generated_files/tmr0.h"
+# 177 "mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 209 "mcc_generated_files/tmr0.h"
+# 216 "mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 245 "mcc_generated_files/tmr0.h"
+# 252 "mcc_generated_files/tmr0.h"
 void TMR0_Reload(void);
-# 260 "mcc_generated_files/tmr0.h"
+# 267 "mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 279 "mcc_generated_files/tmr0.h"
+# 286 "mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 297 "mcc_generated_files/tmr0.h"
+# 304 "mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 315 "mcc_generated_files/tmr0.h"
+# 322 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 52 "mcc_generated_files/tmr0.c" 2
 
@@ -5430,14 +5434,7 @@ void PIN_MANAGER_Initialize (void);
 # 582 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 53 "mcc_generated_files/tmr0.c" 2
-
-
-
-
-
-
-
-
+# 62 "mcc_generated_files/tmr0.c"
 volatile uint8_t timer0ReloadVal;
 void (*TMR0_InterruptHandler)(void);
 
@@ -5492,6 +5489,7 @@ void TMR0_ISR(void)
 {
 
 
+
     INTCONbits.TMR0IF = 0;
 
     TMR0 = timer0ReloadVal;
@@ -5500,6 +5498,8 @@ void TMR0_ISR(void)
     {
         TMR0_InterruptHandler();
     }
+
+
 
     if(lift_open_delay){
         lift_open_delay--;
@@ -5513,6 +5513,11 @@ void TMR0_ISR(void)
     if(back_close_delay){
         back_close_delay--;
     }
+    if(led_flash_timer){
+        led_flash_timer--;
+    }
+
+
     if(second_timer){
         second_timer--;
     }else{
@@ -5529,53 +5534,70 @@ void TMR0_ISR(void)
         }
     }
 
-
     if(lock_btn_state){
         if(!lock_flag){
             if(lock_timer){
                 lock_timer--;
             }else{
                 lock_flag = 1;
-                lock_actuators = !lock_actuators;
+                hand_control_locked = !hand_control_locked;
+
+                if(!hand_control_locked){
+                    led_flash_timer = 500;
+                }
             }
         }
     }else{
         lock_flag = 0;
-        lock_timer = 5000;
+
+        if(hand_control_locked){
+            lock_timer = 8000;
+        }else{
+            lock_timer = 4500;
+        }
     }
 
-    if(pwm_count){
-        pwm_count--;
+
+    if(mode_btn_state){
+        if(massage_hold_timer){
+            massage_hold_timer--;
+        }else{
+            massage_power = 0;
+            should_change_mode = 0;
+        }
     }else{
-        pwm_count = 50;
+        massage_hold_timer = 2000;
     }
+
 
     if(phase_change_timer){
         phase_change_timer--;
     }else{
-        if(massage_phase >= 11){
+        if(massage_phase >= 20){
             massage_phase = 0;
-                WavePlaceHolderOn = WaveInOn;
-                WavePlaceHolderOff = WaveInOff;
-                WaveInOn = WaveGap2On;
-                WaveInOff = WaveGap2Off;
-                WaveGap2On = WaveGap1On;
-                WaveGap2Off = WaveGap1Off;
-                WaveGap1On = WaveOutOn;
-                WaveGap1Off = WaveOutOff;
-                WaveOutOn = WavePlaceHolderOn;
-                WaveOutOff = WavePlaceHolderOff;
-                pulse_direction = !pulse_direction;
+
+            WavePlaceHolderOn = WaveInOn;
+            WavePlaceHolderOff = WaveInOff;
+            WaveInOn = WaveGap2On;
+            WaveInOff = WaveGap2Off;
+            WaveGap2On = WaveGap1On;
+            WaveGap2Off = WaveGap1Off;
+            WaveGap1On = WaveOutOn;
+            WaveGap1Off = WaveOutOff;
+            WaveOutOn = WavePlaceHolderOn;
+            WaveOutOff = WavePlaceHolderOff;
+
+            pulse_direction = !pulse_direction;
         }
         massage_phase++;
         phase_change_timer = 100;
 
-
-        pulse_wave_in_intensity = massage_intensity*massage_phase/11;
+        pulse_wave_in_intensity = massage_intensity*massage_phase/20;
         pulse_wave_out_intensity = massage_intensity - pulse_wave_in_intensity;
+        pulse_wave_in_intensity += 40/10;
+        pulse_wave_out_intensity += 40/10;
+        steady_massage_intensity = massage_intensity + 40/10;
     }
-
-
 }
 
 

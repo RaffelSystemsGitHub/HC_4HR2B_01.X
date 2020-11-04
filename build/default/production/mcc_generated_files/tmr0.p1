@@ -1,39 +1,39 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2974 `(v ~T0 @X0 0 tf ]
-"90 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 90: void Z4SetHigh(void);
+[v F2981 `(v ~T0 @X0 0 tf ]
+"97 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 97: void Z4SetHigh(void);
 [v _Z4SetHigh `(v ~T0 @X0 0 ef ]
-[v F2977 `(v ~T0 @X0 0 tf ]
-"91
-[; ;mcc_generated_files/tmr0.h: 91: void Z4SetLow(void);
+[v F2984 `(v ~T0 @X0 0 tf ]
+"98
+[; ;mcc_generated_files/tmr0.h: 98: void Z4SetLow(void);
 [v _Z4SetLow `(v ~T0 @X0 0 ef ]
-[v F2980 `(v ~T0 @X0 0 tf ]
-"86
-[; ;mcc_generated_files/tmr0.h: 86: void Z2SetHigh(void);
+[v F2987 `(v ~T0 @X0 0 tf ]
+"93
+[; ;mcc_generated_files/tmr0.h: 93: void Z2SetHigh(void);
 [v _Z2SetHigh `(v ~T0 @X0 0 ef ]
-[v F2983 `(v ~T0 @X0 0 tf ]
-"87
-[; ;mcc_generated_files/tmr0.h: 87: void Z2SetLow(void);
+[v F2990 `(v ~T0 @X0 0 tf ]
+"94
+[; ;mcc_generated_files/tmr0.h: 94: void Z2SetLow(void);
 [v _Z2SetLow `(v ~T0 @X0 0 ef ]
-[v F2986 `(v ~T0 @X0 0 tf ]
-"84
-[; ;mcc_generated_files/tmr0.h: 84: void Z1SetHigh(void);
+[v F2993 `(v ~T0 @X0 0 tf ]
+"91
+[; ;mcc_generated_files/tmr0.h: 91: void Z1SetHigh(void);
 [v _Z1SetHigh `(v ~T0 @X0 0 ef ]
-[v F2989 `(v ~T0 @X0 0 tf ]
-"85
-[; ;mcc_generated_files/tmr0.h: 85: void Z1SetLow(void);
+[v F2996 `(v ~T0 @X0 0 tf ]
+"92
+[; ;mcc_generated_files/tmr0.h: 92: void Z1SetLow(void);
 [v _Z1SetLow `(v ~T0 @X0 0 ef ]
-[v F2992 `(v ~T0 @X0 0 tf ]
-[v F2995 `(v ~T0 @X0 0 tf ]
-[v F2998 `(v ~T0 @X0 0 tf ]
-"88
-[; ;mcc_generated_files/tmr0.h: 88: void Z3SetHigh(void);
+[v F2999 `(v ~T0 @X0 0 tf ]
+[v F3002 `(v ~T0 @X0 0 tf ]
+[v F3005 `(v ~T0 @X0 0 tf ]
+"95
+[; ;mcc_generated_files/tmr0.h: 95: void Z3SetHigh(void);
 [v _Z3SetHigh `(v ~T0 @X0 0 ef ]
-[v F3001 `(v ~T0 @X0 0 tf ]
-"89
-[; ;mcc_generated_files/tmr0.h: 89: void Z3SetLow(void);
+[v F3008 `(v ~T0 @X0 0 tf ]
+"96
+[; ;mcc_generated_files/tmr0.h: 96: void Z3SetLow(void);
 [v _Z3SetLow `(v ~T0 @X0 0 ef ]
-[v F3020 `(v ~T0 @X0 0 tf ]
+[v F3027 `(v ~T0 @X0 0 tf ]
 "1758 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h: 1758: extern volatile unsigned char OPTION_REG __attribute__((address(0x095)));
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@149 ]
@@ -55,16 +55,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "374
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h: 374: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-[v F3010 `(v ~T0 @X0 0 tf ]
-"279 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 279:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F3010 ]
-"315
-[; ;mcc_generated_files/tmr0.h: 315: void TMR0_DefaultInterruptHandler(void);
+[v F3017 `(v ~T0 @X0 0 tf ]
+"286 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 286:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F3017 ]
+"322
+[; ;mcc_generated_files/tmr0.h: 322: void TMR0_DefaultInterruptHandler(void);
 [v _TMR0_DefaultInterruptHandler `(v ~T0 @X0 0 ef ]
-[v F3029 `(v ~T0 @X0 0 tf ]
-[v F3041 `(v ~T0 @X0 0 tf ]
-[v F3043 `(v ~T0 @X0 0 tf ]
+[v F3036 `(v ~T0 @X0 0 tf ]
+[v F3048 `(v ~T0 @X0 0 tf ]
+[v F3050 `(v ~T0 @X0 0 tf ]
 "2481 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h: 2481:     struct {
 [s S123 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -616,628 +616,718 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7818
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f1937.h: 7818: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"76 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 76: unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
+"79 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 79: unsigned char lift_open_delay, lift_close_delay, back_open_delay, back_close_delay;
 [v _lift_open_delay `uc ~T0 @X0 1 e ]
 [v _lift_close_delay `uc ~T0 @X0 1 e ]
 [v _back_open_delay `uc ~T0 @X0 1 e ]
 [v _back_close_delay `uc ~T0 @X0 1 e ]
-"77
-[; ;mcc_generated_files/tmr0.h: 77: unsigned int lock_timer, phase_change_timer;
+"80
+[; ;mcc_generated_files/tmr0.h: 80: unsigned int lock_timer, phase_change_timer;
 [v _lock_timer `ui ~T0 @X0 1 e ]
 [v _phase_change_timer `ui ~T0 @X0 1 e ]
-"78
-[; ;mcc_generated_files/tmr0.h: 78: __bit lock_btn_state, lock_actuators, lock_flag, pulse_direction;
+"81
+[; ;mcc_generated_files/tmr0.h: 81: __bit lock_btn_state, hand_control_locked, lock_flag, pulse_direction, should_change_mode, massage_power, mode_btn_state;
 [v _lock_btn_state `b ~T0 @X0 1 e ]
-[v _lock_actuators `b ~T0 @X0 1 e ]
+[v _hand_control_locked `b ~T0 @X0 1 e ]
 [v _lock_flag `b ~T0 @X0 1 e ]
 [v _pulse_direction `b ~T0 @X0 1 e ]
-"79
-[; ;mcc_generated_files/tmr0.h: 79: unsigned char pwm_count = 50;
+[v _should_change_mode `b ~T0 @X0 1 e ]
+[v _massage_power `b ~T0 @X0 1 e ]
+[v _mode_btn_state `b ~T0 @X0 1 e ]
+"82
+[; ;mcc_generated_files/tmr0.h: 82: unsigned char pwm_count = 40;
 [v _pwm_count `uc ~T0 @X0 1 e ]
 [i _pwm_count
--> -> 50 `i `uc
+-> -> 40 `i `uc
 ]
-"80
-[; ;mcc_generated_files/tmr0.h: 80: unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, massage_intensity_setting, massage_phase;
+"83
+[; ;mcc_generated_files/tmr0.h: 83: unsigned char massage_intensity, pulse_wave_in_intensity, pulse_wave_out_intensity, steady_massage_intensity, massage_phase, massage_mode;
 [v _massage_intensity `uc ~T0 @X0 1 e ]
 [v _pulse_wave_in_intensity `uc ~T0 @X0 1 e ]
 [v _pulse_wave_out_intensity `uc ~T0 @X0 1 e ]
-[v _massage_intensity_setting `uc ~T0 @X0 1 e ]
+[v _steady_massage_intensity `uc ~T0 @X0 1 e ]
 [v _massage_phase `uc ~T0 @X0 1 e ]
-"81
-[; ;mcc_generated_files/tmr0.h: 81: unsigned int second_timer = 1000;
+[v _massage_mode `uc ~T0 @X0 1 e ]
+"84
+[; ;mcc_generated_files/tmr0.h: 84: unsigned char massage_intensity_setting = 1;
+[v _massage_intensity_setting `uc ~T0 @X0 1 e ]
+[i _massage_intensity_setting
+-> -> 1 `i `uc
+]
+"85
+[; ;mcc_generated_files/tmr0.h: 85: unsigned int second_timer = 1000;
 [v _second_timer `ui ~T0 @X0 1 e ]
 [i _second_timer
 -> -> 1000 `i `ui
 ]
-"82
-[; ;mcc_generated_files/tmr0.h: 82: unsigned int heat1_timer, heat2_timer, massage_timer;
+"86
+[; ;mcc_generated_files/tmr0.h: 86: unsigned int heat1_timer, heat2_timer, massage_timer;
 [v _heat1_timer `ui ~T0 @X0 1 e ]
 [v _heat2_timer `ui ~T0 @X0 1 e ]
 [v _massage_timer `ui ~T0 @X0 1 e ]
-"94
-[; ;mcc_generated_files/tmr0.h: 94: void (*WavePlaceHolderOn)(void) = Z4SetHigh;
-[v _WavePlaceHolderOn `*F2974 ~T0 @X0 1 e ]
+"87
+[; ;mcc_generated_files/tmr0.h: 87: unsigned int massage_hold_timer = 2000;
+[v _massage_hold_timer `ui ~T0 @X0 1 e ]
+[i _massage_hold_timer
+-> -> 2000 `i `ui
+]
+"88
+[; ;mcc_generated_files/tmr0.h: 88: unsigned int led_flash_timer = 500;
+[v _led_flash_timer `ui ~T0 @X0 1 e ]
+[i _led_flash_timer
+-> -> 500 `i `ui
+]
+"101
+[; ;mcc_generated_files/tmr0.h: 101: void (*WavePlaceHolderOn)(void) = Z4SetHigh;
+[v _WavePlaceHolderOn `*F2981 ~T0 @X0 1 e ]
 [i _WavePlaceHolderOn
 &U _Z4SetHigh
 ]
-"95
-[; ;mcc_generated_files/tmr0.h: 95: void (*WavePlaceHolderOff)(void) = Z4SetLow;
-[v _WavePlaceHolderOff `*F2977 ~T0 @X0 1 e ]
+"102
+[; ;mcc_generated_files/tmr0.h: 102: void (*WavePlaceHolderOff)(void) = Z4SetLow;
+[v _WavePlaceHolderOff `*F2984 ~T0 @X0 1 e ]
 [i _WavePlaceHolderOff
 &U _Z4SetLow
 ]
-"96
-[; ;mcc_generated_files/tmr0.h: 96: void (*WaveInOn)(void) = Z2SetHigh;
-[v _WaveInOn `*F2980 ~T0 @X0 1 e ]
+"103
+[; ;mcc_generated_files/tmr0.h: 103: void (*WaveInOn)(void) = Z2SetHigh;
+[v _WaveInOn `*F2987 ~T0 @X0 1 e ]
 [i _WaveInOn
 &U _Z2SetHigh
 ]
-"97
-[; ;mcc_generated_files/tmr0.h: 97: void (*WaveInOff)(void) = Z2SetLow;
-[v _WaveInOff `*F2983 ~T0 @X0 1 e ]
+"104
+[; ;mcc_generated_files/tmr0.h: 104: void (*WaveInOff)(void) = Z2SetLow;
+[v _WaveInOff `*F2990 ~T0 @X0 1 e ]
 [i _WaveInOff
 &U _Z2SetLow
 ]
-"98
-[; ;mcc_generated_files/tmr0.h: 98: void (*WaveOutOn)(void) = Z1SetHigh;
-[v _WaveOutOn `*F2986 ~T0 @X0 1 e ]
+"105
+[; ;mcc_generated_files/tmr0.h: 105: void (*WaveOutOn)(void) = Z1SetHigh;
+[v _WaveOutOn `*F2993 ~T0 @X0 1 e ]
 [i _WaveOutOn
 &U _Z1SetHigh
 ]
-"99
-[; ;mcc_generated_files/tmr0.h: 99: void (*WaveOutOff)(void) = Z1SetLow;
-[v _WaveOutOff `*F2989 ~T0 @X0 1 e ]
+"106
+[; ;mcc_generated_files/tmr0.h: 106: void (*WaveOutOff)(void) = Z1SetLow;
+[v _WaveOutOff `*F2996 ~T0 @X0 1 e ]
 [i _WaveOutOff
 &U _Z1SetLow
 ]
-"100
-[; ;mcc_generated_files/tmr0.h: 100: void (*WaveGap1On)(void) = Z4SetHigh;
-[v _WaveGap1On `*F2992 ~T0 @X0 1 e ]
+"107
+[; ;mcc_generated_files/tmr0.h: 107: void (*WaveGap1On)(void) = Z4SetHigh;
+[v _WaveGap1On `*F2999 ~T0 @X0 1 e ]
 [i _WaveGap1On
 &U _Z4SetHigh
 ]
-"101
-[; ;mcc_generated_files/tmr0.h: 101: void (*WaveGap1Off)(void) = Z4SetLow;
-[v _WaveGap1Off `*F2995 ~T0 @X0 1 e ]
+"108
+[; ;mcc_generated_files/tmr0.h: 108: void (*WaveGap1Off)(void) = Z4SetLow;
+[v _WaveGap1Off `*F3002 ~T0 @X0 1 e ]
 [i _WaveGap1Off
 &U _Z4SetLow
 ]
-"102
-[; ;mcc_generated_files/tmr0.h: 102: void (*WaveGap2On)(void) = Z3SetHigh;
-[v _WaveGap2On `*F2998 ~T0 @X0 1 e ]
+"109
+[; ;mcc_generated_files/tmr0.h: 109: void (*WaveGap2On)(void) = Z3SetHigh;
+[v _WaveGap2On `*F3005 ~T0 @X0 1 e ]
 [i _WaveGap2On
 &U _Z3SetHigh
 ]
-"103
-[; ;mcc_generated_files/tmr0.h: 103: void (*WaveGap2Off)(void) = Z3SetLow;
-[v _WaveGap2Off `*F3001 ~T0 @X0 1 e ]
+"110
+[; ;mcc_generated_files/tmr0.h: 110: void (*WaveGap2Off)(void) = Z3SetLow;
+[v _WaveGap2Off `*F3008 ~T0 @X0 1 e ]
 [i _WaveGap2Off
 &U _Z3SetLow
 ]
-"61 mcc_generated_files/tmr0.c
-[; ;mcc_generated_files/tmr0.c: 61: volatile uint8_t timer0ReloadVal;
+"62 mcc_generated_files/tmr0.c
+[; ;mcc_generated_files/tmr0.c: 62: volatile uint8_t timer0ReloadVal;
 [v _timer0ReloadVal `Vuc ~T0 @X0 1 e ]
-"62
-[; ;mcc_generated_files/tmr0.c: 62: void (*TMR0_InterruptHandler)(void);
-[v _TMR0_InterruptHandler `*F3020 ~T0 @X0 1 e ]
-"67
-[; ;mcc_generated_files/tmr0.c: 67: void TMR0_Initialize(void)
-[v _TMR0_Initialize `(v ~T0 @X0 1 ef ]
+"63
+[; ;mcc_generated_files/tmr0.c: 63: void (*TMR0_InterruptHandler)(void);
+[v _TMR0_InterruptHandler `*F3027 ~T0 @X0 1 e ]
 "68
-[; ;mcc_generated_files/tmr0.c: 68: {
+[; ;mcc_generated_files/tmr0.c: 68: void TMR0_Initialize(void)
+[v _TMR0_Initialize `(v ~T0 @X0 1 ef ]
+"69
+[; ;mcc_generated_files/tmr0.c: 69: {
 {
 [e :U _TMR0_Initialize ]
 [f ]
-"72
-[; ;mcc_generated_files/tmr0.c: 72:     OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD1 & 0x3F));
+"73
+[; ;mcc_generated_files/tmr0.c: 73:     OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD1 & 0x3F));
 [e = _OPTION_REG -> | & -> _OPTION_REG `i -> 192 `i & -> 209 `i -> 63 `i `uc ]
-"75
-[; ;mcc_generated_files/tmr0.c: 75:     TMR0 = 0x0A;
+"76
+[; ;mcc_generated_files/tmr0.c: 76:     TMR0 = 0x0A;
 [e = _TMR0 -> -> 10 `i `uc ]
-"78
-[; ;mcc_generated_files/tmr0.c: 78:     timer0ReloadVal= 10;
+"79
+[; ;mcc_generated_files/tmr0.c: 79:     timer0ReloadVal= 10;
 [e = _timer0ReloadVal -> -> 10 `i `uc ]
-"81
-[; ;mcc_generated_files/tmr0.c: 81:     INTCONbits.TMR0IF = 0;
+"82
+[; ;mcc_generated_files/tmr0.c: 82:     INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"84
-[; ;mcc_generated_files/tmr0.c: 84:     INTCONbits.TMR0IE = 1;
+"85
+[; ;mcc_generated_files/tmr0.c: 85:     INTCONbits.TMR0IE = 1;
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"87
-[; ;mcc_generated_files/tmr0.c: 87:     TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
-[e ( _TMR0_SetInterruptHandler (1 &U _TMR0_DefaultInterruptHandler ]
 "88
-[; ;mcc_generated_files/tmr0.c: 88: }
+[; ;mcc_generated_files/tmr0.c: 88:     TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
+[e ( _TMR0_SetInterruptHandler (1 &U _TMR0_DefaultInterruptHandler ]
+"89
+[; ;mcc_generated_files/tmr0.c: 89: }
 [e :UE 380 ]
 }
-"90
-[; ;mcc_generated_files/tmr0.c: 90: uint8_t TMR0_ReadTimer(void)
-[v _TMR0_ReadTimer `(uc ~T0 @X0 1 ef ]
 "91
-[; ;mcc_generated_files/tmr0.c: 91: {
+[; ;mcc_generated_files/tmr0.c: 91: uint8_t TMR0_ReadTimer(void)
+[v _TMR0_ReadTimer `(uc ~T0 @X0 1 ef ]
+"92
+[; ;mcc_generated_files/tmr0.c: 92: {
 {
 [e :U _TMR0_ReadTimer ]
 [f ]
-"92
-[; ;mcc_generated_files/tmr0.c: 92:     uint8_t readVal;
+"93
+[; ;mcc_generated_files/tmr0.c: 93:     uint8_t readVal;
 [v _readVal `uc ~T0 @X0 1 a ]
-"94
-[; ;mcc_generated_files/tmr0.c: 94:     readVal = TMR0;
+"95
+[; ;mcc_generated_files/tmr0.c: 95:     readVal = TMR0;
 [e = _readVal _TMR0 ]
-"96
-[; ;mcc_generated_files/tmr0.c: 96:     return readVal;
+"97
+[; ;mcc_generated_files/tmr0.c: 97:     return readVal;
 [e ) _readVal ]
 [e $UE 381  ]
-"97
-[; ;mcc_generated_files/tmr0.c: 97: }
+"98
+[; ;mcc_generated_files/tmr0.c: 98: }
 [e :UE 381 ]
 }
-"99
-[; ;mcc_generated_files/tmr0.c: 99: void TMR0_WriteTimer(uint8_t timerVal)
-[v _TMR0_WriteTimer `(v ~T0 @X0 1 ef1`uc ]
 "100
-[; ;mcc_generated_files/tmr0.c: 100: {
+[; ;mcc_generated_files/tmr0.c: 100: void TMR0_WriteTimer(uint8_t timerVal)
+[v _TMR0_WriteTimer `(v ~T0 @X0 1 ef1`uc ]
+"101
+[; ;mcc_generated_files/tmr0.c: 101: {
 {
 [e :U _TMR0_WriteTimer ]
-"99
-[; ;mcc_generated_files/tmr0.c: 99: void TMR0_WriteTimer(uint8_t timerVal)
-[v _timerVal `uc ~T0 @X0 1 r1 ]
 "100
-[; ;mcc_generated_files/tmr0.c: 100: {
+[; ;mcc_generated_files/tmr0.c: 100: void TMR0_WriteTimer(uint8_t timerVal)
+[v _timerVal `uc ~T0 @X0 1 r1 ]
+"101
+[; ;mcc_generated_files/tmr0.c: 101: {
 [f ]
-"102
-[; ;mcc_generated_files/tmr0.c: 102:     TMR0 = timerVal;
-[e = _TMR0 _timerVal ]
 "103
-[; ;mcc_generated_files/tmr0.c: 103: }
+[; ;mcc_generated_files/tmr0.c: 103:     TMR0 = timerVal;
+[e = _TMR0 _timerVal ]
+"104
+[; ;mcc_generated_files/tmr0.c: 104: }
 [e :UE 382 ]
 }
-"105
-[; ;mcc_generated_files/tmr0.c: 105: void TMR0_Reload(void)
-[v _TMR0_Reload `(v ~T0 @X0 1 ef ]
 "106
-[; ;mcc_generated_files/tmr0.c: 106: {
+[; ;mcc_generated_files/tmr0.c: 106: void TMR0_Reload(void)
+[v _TMR0_Reload `(v ~T0 @X0 1 ef ]
+"107
+[; ;mcc_generated_files/tmr0.c: 107: {
 {
 [e :U _TMR0_Reload ]
 [f ]
-"108
-[; ;mcc_generated_files/tmr0.c: 108:     TMR0 = timer0ReloadVal;
-[e = _TMR0 _timer0ReloadVal ]
 "109
-[; ;mcc_generated_files/tmr0.c: 109: }
+[; ;mcc_generated_files/tmr0.c: 109:     TMR0 = timer0ReloadVal;
+[e = _TMR0 _timer0ReloadVal ]
+"110
+[; ;mcc_generated_files/tmr0.c: 110: }
 [e :UE 383 ]
 }
-"111
-[; ;mcc_generated_files/tmr0.c: 111: void TMR0_ISR(void)
-[v _TMR0_ISR `(v ~T0 @X0 1 ef ]
 "112
-[; ;mcc_generated_files/tmr0.c: 112: {
+[; ;mcc_generated_files/tmr0.c: 112: void TMR0_ISR(void)
+[v _TMR0_ISR `(v ~T0 @X0 1 ef ]
+"113
+[; ;mcc_generated_files/tmr0.c: 113: {
 {
 [e :U _TMR0_ISR ]
 [f ]
-"115
-[; ;mcc_generated_files/tmr0.c: 115:     INTCONbits.TMR0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "117
-[; ;mcc_generated_files/tmr0.c: 117:     TMR0 = timer0ReloadVal;
-[e = _TMR0 _timer0ReloadVal ]
+[; ;mcc_generated_files/tmr0.c: 117:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "119
-[; ;mcc_generated_files/tmr0.c: 119:     if(TMR0_InterruptHandler)
-[e $ ! != _TMR0_InterruptHandler -> -> 0 `i `*F3029 385  ]
-"120
-[; ;mcc_generated_files/tmr0.c: 120:     {
-{
+[; ;mcc_generated_files/tmr0.c: 119:     TMR0 = timer0ReloadVal;
+[e = _TMR0 _timer0ReloadVal ]
 "121
-[; ;mcc_generated_files/tmr0.c: 121:         TMR0_InterruptHandler();
-[e ( *U _TMR0_InterruptHandler ..  ]
+[; ;mcc_generated_files/tmr0.c: 121:     if(TMR0_InterruptHandler)
+[e $ ! != _TMR0_InterruptHandler -> -> 0 `i `*F3036 385  ]
 "122
-[; ;mcc_generated_files/tmr0.c: 122:     }
+[; ;mcc_generated_files/tmr0.c: 122:     {
+{
+"123
+[; ;mcc_generated_files/tmr0.c: 123:         TMR0_InterruptHandler();
+[e ( *U _TMR0_InterruptHandler ..  ]
+"124
+[; ;mcc_generated_files/tmr0.c: 124:     }
 }
 [e :U 385 ]
-"124
-[; ;mcc_generated_files/tmr0.c: 124:     if(lift_open_delay){
+"128
+[; ;mcc_generated_files/tmr0.c: 128:     if(lift_open_delay){
 [e $ ! != -> _lift_open_delay `i -> 0 `i 386  ]
 {
-"125
-[; ;mcc_generated_files/tmr0.c: 125:         lift_open_delay--;
+"129
+[; ;mcc_generated_files/tmr0.c: 129:         lift_open_delay--;
 [e -- _lift_open_delay -> -> 1 `i `uc ]
-"126
-[; ;mcc_generated_files/tmr0.c: 126:     }
+"130
+[; ;mcc_generated_files/tmr0.c: 130:     }
 }
 [e :U 386 ]
-"127
-[; ;mcc_generated_files/tmr0.c: 127:     if(lift_close_delay){
+"131
+[; ;mcc_generated_files/tmr0.c: 131:     if(lift_close_delay){
 [e $ ! != -> _lift_close_delay `i -> 0 `i 387  ]
 {
-"128
-[; ;mcc_generated_files/tmr0.c: 128:         lift_close_delay--;
+"132
+[; ;mcc_generated_files/tmr0.c: 132:         lift_close_delay--;
 [e -- _lift_close_delay -> -> 1 `i `uc ]
-"129
-[; ;mcc_generated_files/tmr0.c: 129:     }
+"133
+[; ;mcc_generated_files/tmr0.c: 133:     }
 }
 [e :U 387 ]
-"130
-[; ;mcc_generated_files/tmr0.c: 130:     if(back_open_delay){
+"134
+[; ;mcc_generated_files/tmr0.c: 134:     if(back_open_delay){
 [e $ ! != -> _back_open_delay `i -> 0 `i 388  ]
 {
-"131
-[; ;mcc_generated_files/tmr0.c: 131:         back_open_delay--;
+"135
+[; ;mcc_generated_files/tmr0.c: 135:         back_open_delay--;
 [e -- _back_open_delay -> -> 1 `i `uc ]
-"132
-[; ;mcc_generated_files/tmr0.c: 132:     }
+"136
+[; ;mcc_generated_files/tmr0.c: 136:     }
 }
 [e :U 388 ]
-"133
-[; ;mcc_generated_files/tmr0.c: 133:     if(back_close_delay){
+"137
+[; ;mcc_generated_files/tmr0.c: 137:     if(back_close_delay){
 [e $ ! != -> _back_close_delay `i -> 0 `i 389  ]
 {
-"134
-[; ;mcc_generated_files/tmr0.c: 134:         back_close_delay--;
+"138
+[; ;mcc_generated_files/tmr0.c: 138:         back_close_delay--;
 [e -- _back_close_delay -> -> 1 `i `uc ]
-"135
-[; ;mcc_generated_files/tmr0.c: 135:     }
+"139
+[; ;mcc_generated_files/tmr0.c: 139:     }
 }
 [e :U 389 ]
-"136
-[; ;mcc_generated_files/tmr0.c: 136:     if(second_timer){
-[e $ ! != _second_timer -> -> 0 `i `ui 390  ]
-{
-"137
-[; ;mcc_generated_files/tmr0.c: 137:         second_timer--;
-[e -- _second_timer -> -> 1 `i `ui ]
-"138
-[; ;mcc_generated_files/tmr0.c: 138:     }else{
-}
-[e $U 391  ]
-[e :U 390 ]
-{
-"139
-[; ;mcc_generated_files/tmr0.c: 139:         second_timer = 1000;
-[e = _second_timer -> -> 1000 `i `ui ]
 "140
-[; ;mcc_generated_files/tmr0.c: 140:         if(heat1_timer){
-[e $ ! != _heat1_timer -> -> 0 `i `ui 392  ]
+[; ;mcc_generated_files/tmr0.c: 140:     if(led_flash_timer){
+[e $ ! != _led_flash_timer -> -> 0 `i `ui 390  ]
 {
 "141
-[; ;mcc_generated_files/tmr0.c: 141:             heat1_timer--;
-[e -- _heat1_timer -> -> 1 `i `ui ]
+[; ;mcc_generated_files/tmr0.c: 141:         led_flash_timer--;
+[e -- _led_flash_timer -> -> 1 `i `ui ]
 "142
-[; ;mcc_generated_files/tmr0.c: 142:         }
+[; ;mcc_generated_files/tmr0.c: 142:     }
 }
-[e :U 392 ]
-"143
-[; ;mcc_generated_files/tmr0.c: 143:         if(heat2_timer){
-[e $ ! != _heat2_timer -> -> 0 `i `ui 393  ]
-{
-"144
-[; ;mcc_generated_files/tmr0.c: 144:             heat2_timer--;
-[e -- _heat2_timer -> -> 1 `i `ui ]
+[e :U 390 ]
 "145
-[; ;mcc_generated_files/tmr0.c: 145:         }
-}
-[e :U 393 ]
+[; ;mcc_generated_files/tmr0.c: 145:     if(second_timer){
+[e $ ! != _second_timer -> -> 0 `i `ui 391  ]
+{
+"146
+[; ;mcc_generated_files/tmr0.c: 146:         second_timer--;
+[e -- _second_timer -> -> 1 `i `ui ]
 "147
-[; ;mcc_generated_files/tmr0.c: 147:         if(massage_timer){
-[e $ ! != _massage_timer -> -> 0 `i `ui 394  ]
+[; ;mcc_generated_files/tmr0.c: 147:     }else{
+}
+[e $U 392  ]
+[e :U 391 ]
 {
 "148
-[; ;mcc_generated_files/tmr0.c: 148:             massage_timer--;
-[e -- _massage_timer -> -> 1 `i `ui ]
+[; ;mcc_generated_files/tmr0.c: 148:         second_timer = 1000;
+[e = _second_timer -> -> 1000 `i `ui ]
 "149
-[; ;mcc_generated_files/tmr0.c: 149:         }
+[; ;mcc_generated_files/tmr0.c: 149:         if(heat1_timer){
+[e $ ! != _heat1_timer -> -> 0 `i `ui 393  ]
+{
+"150
+[; ;mcc_generated_files/tmr0.c: 150:             heat1_timer--;
+[e -- _heat1_timer -> -> 1 `i `ui ]
+"151
+[; ;mcc_generated_files/tmr0.c: 151:         }
+}
+[e :U 393 ]
+"152
+[; ;mcc_generated_files/tmr0.c: 152:         if(heat2_timer){
+[e $ ! != _heat2_timer -> -> 0 `i `ui 394  ]
+{
+"153
+[; ;mcc_generated_files/tmr0.c: 153:             heat2_timer--;
+[e -- _heat2_timer -> -> 1 `i `ui ]
+"154
+[; ;mcc_generated_files/tmr0.c: 154:         }
 }
 [e :U 394 ]
-"150
-[; ;mcc_generated_files/tmr0.c: 150:     }
-}
-[e :U 391 ]
-"153
-[; ;mcc_generated_files/tmr0.c: 153:     if(lock_btn_state){
-[e $ ! _lock_btn_state 395  ]
-{
-"154
-[; ;mcc_generated_files/tmr0.c: 154:         if(!lock_flag){
-[e $ ! ! _lock_flag 396  ]
-{
-"155
-[; ;mcc_generated_files/tmr0.c: 155:             if(lock_timer){
-[e $ ! != _lock_timer -> -> 0 `i `ui 397  ]
-{
 "156
-[; ;mcc_generated_files/tmr0.c: 156:                 lock_timer--;
-[e -- _lock_timer -> -> 1 `i `ui ]
-"157
-[; ;mcc_generated_files/tmr0.c: 157:             }else{
-}
-[e $U 398  ]
-[e :U 397 ]
+[; ;mcc_generated_files/tmr0.c: 156:         if(massage_timer){
+[e $ ! != _massage_timer -> -> 0 `i `ui 395  ]
 {
+"157
+[; ;mcc_generated_files/tmr0.c: 157:             massage_timer--;
+[e -- _massage_timer -> -> 1 `i `ui ]
 "158
-[; ;mcc_generated_files/tmr0.c: 158:                 lock_flag = 1;
-[e = _lock_flag -> -> 1 `i `b ]
-"159
-[; ;mcc_generated_files/tmr0.c: 159:                 lock_actuators = !lock_actuators;
-[e = _lock_actuators ! _lock_actuators ]
-"160
-[; ;mcc_generated_files/tmr0.c: 160:             }
+[; ;mcc_generated_files/tmr0.c: 158:         }
 }
-[e :U 398 ]
-"161
-[; ;mcc_generated_files/tmr0.c: 161:         }
-}
-[e :U 396 ]
-"162
-[; ;mcc_generated_files/tmr0.c: 162:     }else{
-}
-[e $U 399  ]
 [e :U 395 ]
+"159
+[; ;mcc_generated_files/tmr0.c: 159:     }
+}
+[e :U 392 ]
+"161
+[; ;mcc_generated_files/tmr0.c: 161:     if(lock_btn_state){
+[e $ ! _lock_btn_state 396  ]
+{
+"162
+[; ;mcc_generated_files/tmr0.c: 162:         if(!lock_flag){
+[e $ ! ! _lock_flag 397  ]
 {
 "163
-[; ;mcc_generated_files/tmr0.c: 163:         lock_flag = 0;
-[e = _lock_flag -> -> 0 `i `b ]
-"164
-[; ;mcc_generated_files/tmr0.c: 164:         lock_timer = 5000;
-[e = _lock_timer -> -> 5000 `i `ui ]
-"165
-[; ;mcc_generated_files/tmr0.c: 165:     }
-}
-[e :U 399 ]
-"167
-[; ;mcc_generated_files/tmr0.c: 167:     if(pwm_count){
-[e $ ! != -> _pwm_count `i -> 0 `i 400  ]
+[; ;mcc_generated_files/tmr0.c: 163:             if(lock_timer){
+[e $ ! != _lock_timer -> -> 0 `i `ui 398  ]
 {
-"168
-[; ;mcc_generated_files/tmr0.c: 168:         pwm_count--;
-[e -- _pwm_count -> -> 1 `i `uc ]
-"169
-[; ;mcc_generated_files/tmr0.c: 169:     }else{
+"164
+[; ;mcc_generated_files/tmr0.c: 164:                 lock_timer--;
+[e -- _lock_timer -> -> 1 `i `ui ]
+"165
+[; ;mcc_generated_files/tmr0.c: 165:             }else{
 }
-[e $U 401  ]
-[e :U 400 ]
+[e $U 399  ]
+[e :U 398 ]
+{
+"166
+[; ;mcc_generated_files/tmr0.c: 166:                 lock_flag = 1;
+[e = _lock_flag -> -> 1 `i `b ]
+"167
+[; ;mcc_generated_files/tmr0.c: 167:                 hand_control_locked = !hand_control_locked;
+[e = _hand_control_locked ! _hand_control_locked ]
+"169
+[; ;mcc_generated_files/tmr0.c: 169:                 if(!hand_control_locked){
+[e $ ! ! _hand_control_locked 400  ]
 {
 "170
-[; ;mcc_generated_files/tmr0.c: 170:         pwm_count = 50;
-[e = _pwm_count -> -> 50 `i `uc ]
+[; ;mcc_generated_files/tmr0.c: 170:                     led_flash_timer = 500;
+[e = _led_flash_timer -> -> 500 `i `ui ]
 "171
-[; ;mcc_generated_files/tmr0.c: 171:     }
+[; ;mcc_generated_files/tmr0.c: 171:                 }
 }
-[e :U 401 ]
+[e :U 400 ]
+"172
+[; ;mcc_generated_files/tmr0.c: 172:             }
+}
+[e :U 399 ]
 "173
-[; ;mcc_generated_files/tmr0.c: 173:     if(phase_change_timer){
-[e $ ! != _phase_change_timer -> -> 0 `i `ui 402  ]
-{
+[; ;mcc_generated_files/tmr0.c: 173:         }
+}
+[e :U 397 ]
 "174
-[; ;mcc_generated_files/tmr0.c: 174:         phase_change_timer--;
-[e -- _phase_change_timer -> -> 1 `i `ui ]
+[; ;mcc_generated_files/tmr0.c: 174:     }else{
+}
+[e $U 401  ]
+[e :U 396 ]
+{
 "175
-[; ;mcc_generated_files/tmr0.c: 175:     }else{
+[; ;mcc_generated_files/tmr0.c: 175:         lock_flag = 0;
+[e = _lock_flag -> -> 0 `i `b ]
+"177
+[; ;mcc_generated_files/tmr0.c: 177:         if(hand_control_locked){
+[e $ ! _hand_control_locked 402  ]
+{
+"178
+[; ;mcc_generated_files/tmr0.c: 178:             lock_timer = 8000;
+[e = _lock_timer -> -> 8000 `i `ui ]
+"179
+[; ;mcc_generated_files/tmr0.c: 179:         }else{
 }
 [e $U 403  ]
 [e :U 402 ]
 {
-"176
-[; ;mcc_generated_files/tmr0.c: 176:         if(massage_phase >= 11){
-[e $ ! >= -> _massage_phase `i -> 11 `i 404  ]
-{
-"177
-[; ;mcc_generated_files/tmr0.c: 177:             massage_phase = 0;
-[e = _massage_phase -> -> 0 `i `uc ]
-"178
-[; ;mcc_generated_files/tmr0.c: 178:                 WavePlaceHolderOn = WaveInOn;
-[e = _WavePlaceHolderOn _WaveInOn ]
-"179
-[; ;mcc_generated_files/tmr0.c: 179:                 WavePlaceHolderOff = WaveInOff;
-[e = _WavePlaceHolderOff _WaveInOff ]
 "180
-[; ;mcc_generated_files/tmr0.c: 180:                 WaveInOn = WaveGap2On;
-[e = _WaveInOn _WaveGap2On ]
+[; ;mcc_generated_files/tmr0.c: 180:             lock_timer = 4500;
+[e = _lock_timer -> -> 4500 `i `ui ]
 "181
-[; ;mcc_generated_files/tmr0.c: 181:                 WaveInOff = WaveGap2Off;
-[e = _WaveInOff _WaveGap2Off ]
-"182
-[; ;mcc_generated_files/tmr0.c: 182:                 WaveGap2On = WaveGap1On;
-[e = _WaveGap2On _WaveGap1On ]
-"183
-[; ;mcc_generated_files/tmr0.c: 183:                 WaveGap2Off = WaveGap1Off;
-[e = _WaveGap2Off _WaveGap1Off ]
-"184
-[; ;mcc_generated_files/tmr0.c: 184:                 WaveGap1On = WaveOutOn;
-[e = _WaveGap1On _WaveOutOn ]
-"185
-[; ;mcc_generated_files/tmr0.c: 185:                 WaveGap1Off = WaveOutOff;
-[e = _WaveGap1Off _WaveOutOff ]
-"186
-[; ;mcc_generated_files/tmr0.c: 186:                 WaveOutOn = WavePlaceHolderOn;
-[e = _WaveOutOn _WavePlaceHolderOn ]
-"187
-[; ;mcc_generated_files/tmr0.c: 187:                 WaveOutOff = WavePlaceHolderOff;
-[e = _WaveOutOff _WavePlaceHolderOff ]
-"188
-[; ;mcc_generated_files/tmr0.c: 188:                 pulse_direction = !pulse_direction;
-[e = _pulse_direction ! _pulse_direction ]
-"189
-[; ;mcc_generated_files/tmr0.c: 189:         }
-}
-[e :U 404 ]
-"190
-[; ;mcc_generated_files/tmr0.c: 190:         massage_phase++;
-[e ++ _massage_phase -> -> 1 `i `uc ]
-"191
-[; ;mcc_generated_files/tmr0.c: 191:         phase_change_timer = 100;
-[e = _phase_change_timer -> -> 100 `i `ui ]
-"194
-[; ;mcc_generated_files/tmr0.c: 194:         pulse_wave_in_intensity = massage_intensity*massage_phase/11;
-[e = _pulse_wave_in_intensity -> / * -> _massage_intensity `i -> _massage_phase `i -> 11 `i `uc ]
-"195
-[; ;mcc_generated_files/tmr0.c: 195:         pulse_wave_out_intensity = massage_intensity - pulse_wave_in_intensity;
-[e = _pulse_wave_out_intensity -> - -> _massage_intensity `i -> _pulse_wave_in_intensity `i `uc ]
-"196
-[; ;mcc_generated_files/tmr0.c: 196:     }
+[; ;mcc_generated_files/tmr0.c: 181:         }
 }
 [e :U 403 ]
+"182
+[; ;mcc_generated_files/tmr0.c: 182:     }
+}
+[e :U 401 ]
+"185
+[; ;mcc_generated_files/tmr0.c: 185:     if(mode_btn_state){
+[e $ ! _mode_btn_state 404  ]
+{
+"186
+[; ;mcc_generated_files/tmr0.c: 186:         if(massage_hold_timer){
+[e $ ! != _massage_hold_timer -> -> 0 `i `ui 405  ]
+{
+"187
+[; ;mcc_generated_files/tmr0.c: 187:             massage_hold_timer--;
+[e -- _massage_hold_timer -> -> 1 `i `ui ]
+"188
+[; ;mcc_generated_files/tmr0.c: 188:         }else{
+}
+[e $U 406  ]
+[e :U 405 ]
+{
+"189
+[; ;mcc_generated_files/tmr0.c: 189:             massage_power = 0;
+[e = _massage_power -> -> 0 `i `b ]
+"190
+[; ;mcc_generated_files/tmr0.c: 190:             should_change_mode = 0;
+[e = _should_change_mode -> -> 0 `i `b ]
+"191
+[; ;mcc_generated_files/tmr0.c: 191:         }
+}
+[e :U 406 ]
+"192
+[; ;mcc_generated_files/tmr0.c: 192:     }else{
+}
+[e $U 407  ]
+[e :U 404 ]
+{
+"193
+[; ;mcc_generated_files/tmr0.c: 193:         massage_hold_timer = 2000;
+[e = _massage_hold_timer -> -> 2000 `i `ui ]
+"194
+[; ;mcc_generated_files/tmr0.c: 194:     }
+}
+[e :U 407 ]
+"197
+[; ;mcc_generated_files/tmr0.c: 197:     if(phase_change_timer){
+[e $ ! != _phase_change_timer -> -> 0 `i `ui 408  ]
+{
+"198
+[; ;mcc_generated_files/tmr0.c: 198:         phase_change_timer--;
+[e -- _phase_change_timer -> -> 1 `i `ui ]
 "199
-[; ;mcc_generated_files/tmr0.c: 199: }
+[; ;mcc_generated_files/tmr0.c: 199:     }else{
+}
+[e $U 409  ]
+[e :U 408 ]
+{
+"200
+[; ;mcc_generated_files/tmr0.c: 200:         if(massage_phase >= 20){
+[e $ ! >= -> _massage_phase `i -> 20 `i 410  ]
+{
+"201
+[; ;mcc_generated_files/tmr0.c: 201:             massage_phase = 0;
+[e = _massage_phase -> -> 0 `i `uc ]
+"203
+[; ;mcc_generated_files/tmr0.c: 203:             WavePlaceHolderOn = WaveInOn;
+[e = _WavePlaceHolderOn _WaveInOn ]
+"204
+[; ;mcc_generated_files/tmr0.c: 204:             WavePlaceHolderOff = WaveInOff;
+[e = _WavePlaceHolderOff _WaveInOff ]
+"205
+[; ;mcc_generated_files/tmr0.c: 205:             WaveInOn = WaveGap2On;
+[e = _WaveInOn _WaveGap2On ]
+"206
+[; ;mcc_generated_files/tmr0.c: 206:             WaveInOff = WaveGap2Off;
+[e = _WaveInOff _WaveGap2Off ]
+"207
+[; ;mcc_generated_files/tmr0.c: 207:             WaveGap2On = WaveGap1On;
+[e = _WaveGap2On _WaveGap1On ]
+"208
+[; ;mcc_generated_files/tmr0.c: 208:             WaveGap2Off = WaveGap1Off;
+[e = _WaveGap2Off _WaveGap1Off ]
+"209
+[; ;mcc_generated_files/tmr0.c: 209:             WaveGap1On = WaveOutOn;
+[e = _WaveGap1On _WaveOutOn ]
+"210
+[; ;mcc_generated_files/tmr0.c: 210:             WaveGap1Off = WaveOutOff;
+[e = _WaveGap1Off _WaveOutOff ]
+"211
+[; ;mcc_generated_files/tmr0.c: 211:             WaveOutOn = WavePlaceHolderOn;
+[e = _WaveOutOn _WavePlaceHolderOn ]
+"212
+[; ;mcc_generated_files/tmr0.c: 212:             WaveOutOff = WavePlaceHolderOff;
+[e = _WaveOutOff _WavePlaceHolderOff ]
+"214
+[; ;mcc_generated_files/tmr0.c: 214:             pulse_direction = !pulse_direction;
+[e = _pulse_direction ! _pulse_direction ]
+"215
+[; ;mcc_generated_files/tmr0.c: 215:         }
+}
+[e :U 410 ]
+"216
+[; ;mcc_generated_files/tmr0.c: 216:         massage_phase++;
+[e ++ _massage_phase -> -> 1 `i `uc ]
+"217
+[; ;mcc_generated_files/tmr0.c: 217:         phase_change_timer = 100;
+[e = _phase_change_timer -> -> 100 `i `ui ]
+"219
+[; ;mcc_generated_files/tmr0.c: 219:         pulse_wave_in_intensity = massage_intensity*massage_phase/20;
+[e = _pulse_wave_in_intensity -> / * -> _massage_intensity `i -> _massage_phase `i -> 20 `i `uc ]
+"220
+[; ;mcc_generated_files/tmr0.c: 220:         pulse_wave_out_intensity = massage_intensity - pulse_wave_in_intensity;
+[e = _pulse_wave_out_intensity -> - -> _massage_intensity `i -> _pulse_wave_in_intensity `i `uc ]
+"221
+[; ;mcc_generated_files/tmr0.c: 221:         pulse_wave_in_intensity += 40/10;
+[e =+ _pulse_wave_in_intensity -> / -> 40 `i -> 10 `i `uc ]
+"222
+[; ;mcc_generated_files/tmr0.c: 222:         pulse_wave_out_intensity += 40/10;
+[e =+ _pulse_wave_out_intensity -> / -> 40 `i -> 10 `i `uc ]
+"223
+[; ;mcc_generated_files/tmr0.c: 223:         steady_massage_intensity = massage_intensity + 40/10;
+[e = _steady_massage_intensity -> + -> _massage_intensity `i / -> 40 `i -> 10 `i `uc ]
+"224
+[; ;mcc_generated_files/tmr0.c: 224:     }
+}
+[e :U 409 ]
+"225
+[; ;mcc_generated_files/tmr0.c: 225: }
 [e :UE 384 ]
 }
-"202
-[; ;mcc_generated_files/tmr0.c: 202: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
-[v _TMR0_SetInterruptHandler `(v ~T0 @X0 1 ef1`*F3041 ]
+"228
+[; ;mcc_generated_files/tmr0.c: 228: void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
+[v _TMR0_SetInterruptHandler `(v ~T0 @X0 1 ef1`*F3048 ]
 {
 [e :U _TMR0_SetInterruptHandler ]
-[v _InterruptHandler `*F3043 ~T0 @X0 1 r1 ]
+[v _InterruptHandler `*F3050 ~T0 @X0 1 r1 ]
 [f ]
-"203
-[; ;mcc_generated_files/tmr0.c: 203:     TMR0_InterruptHandler = InterruptHandler;
+"229
+[; ;mcc_generated_files/tmr0.c: 229:     TMR0_InterruptHandler = InterruptHandler;
 [e = _TMR0_InterruptHandler _InterruptHandler ]
-"204
-[; ;mcc_generated_files/tmr0.c: 204: }
-[e :UE 405 ]
+"230
+[; ;mcc_generated_files/tmr0.c: 230: }
+[e :UE 411 ]
 }
-"206
-[; ;mcc_generated_files/tmr0.c: 206: void TMR0_DefaultInterruptHandler(void){
+"232
+[; ;mcc_generated_files/tmr0.c: 232: void TMR0_DefaultInterruptHandler(void){
 [v _TMR0_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 {
 [e :U _TMR0_DefaultInterruptHandler ]
 [f ]
-"209
-[; ;mcc_generated_files/tmr0.c: 209: }
-[e :UE 406 ]
+"235
+[; ;mcc_generated_files/tmr0.c: 235: }
+[e :UE 412 ]
 }
-"213
-[; ;mcc_generated_files/tmr0.c: 213: void Z1SetHigh(void){
+"239
+[; ;mcc_generated_files/tmr0.c: 239: void Z1SetHigh(void){
 [v _Z1SetHigh `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z1SetHigh ]
 [f ]
-"214
-[; ;mcc_generated_files/tmr0.c: 214:     do { LATCbits.LATC4 = 1; } while(0);
-[e :U 410 ]
+"240
+[; ;mcc_generated_files/tmr0.c: 240:     do { LATCbits.LATC4 = 1; } while(0);
+[e :U 416 ]
 {
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
 }
-[e :U 409 ]
-"215
-[; ;mcc_generated_files/tmr0.c: 215: }
-[e :UE 407 ]
+[e :U 415 ]
+"241
+[; ;mcc_generated_files/tmr0.c: 241: }
+[e :UE 413 ]
 }
-"217
-[; ;mcc_generated_files/tmr0.c: 217: void Z1SetLow(){
+"243
+[; ;mcc_generated_files/tmr0.c: 243: void Z1SetLow(){
 [v _Z1SetLow `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z1SetLow ]
 [f ]
-"218
-[; ;mcc_generated_files/tmr0.c: 218:     do { LATCbits.LATC4 = 0; } while(0);
-[e :U 414 ]
+"244
+[; ;mcc_generated_files/tmr0.c: 244:     do { LATCbits.LATC4 = 0; } while(0);
+[e :U 420 ]
 {
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
 }
-[e :U 413 ]
-"219
-[; ;mcc_generated_files/tmr0.c: 219: }
-[e :UE 411 ]
+[e :U 419 ]
+"245
+[; ;mcc_generated_files/tmr0.c: 245: }
+[e :UE 417 ]
 }
-"221
-[; ;mcc_generated_files/tmr0.c: 221: void Z2SetHigh(void){
+"247
+[; ;mcc_generated_files/tmr0.c: 247: void Z2SetHigh(void){
 [v _Z2SetHigh `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z2SetHigh ]
 [f ]
-"222
-[; ;mcc_generated_files/tmr0.c: 222:     do { LATDbits.LATD3 = 1; } while(0);
-[e :U 418 ]
+"248
+[; ;mcc_generated_files/tmr0.c: 248:     do { LATDbits.LATD3 = 1; } while(0);
+[e :U 424 ]
 {
 [e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
 }
-[e :U 417 ]
-"223
-[; ;mcc_generated_files/tmr0.c: 223: }
-[e :UE 415 ]
+[e :U 423 ]
+"249
+[; ;mcc_generated_files/tmr0.c: 249: }
+[e :UE 421 ]
 }
-"225
-[; ;mcc_generated_files/tmr0.c: 225: void Z2SetLow(){
+"251
+[; ;mcc_generated_files/tmr0.c: 251: void Z2SetLow(){
 [v _Z2SetLow `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z2SetLow ]
 [f ]
-"226
-[; ;mcc_generated_files/tmr0.c: 226:     do { LATDbits.LATD3 = 0; } while(0);
-[e :U 422 ]
+"252
+[; ;mcc_generated_files/tmr0.c: 252:     do { LATDbits.LATD3 = 0; } while(0);
+[e :U 428 ]
 {
 [e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
 }
-[e :U 421 ]
-"227
-[; ;mcc_generated_files/tmr0.c: 227: }
-[e :UE 419 ]
+[e :U 427 ]
+"253
+[; ;mcc_generated_files/tmr0.c: 253: }
+[e :UE 425 ]
 }
-"229
-[; ;mcc_generated_files/tmr0.c: 229: void Z3SetHigh(void){
+"255
+[; ;mcc_generated_files/tmr0.c: 255: void Z3SetHigh(void){
 [v _Z3SetHigh `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z3SetHigh ]
 [f ]
-"230
-[; ;mcc_generated_files/tmr0.c: 230:     do { LATCbits.LATC3 = 1; } while(0);
-[e :U 426 ]
+"256
+[; ;mcc_generated_files/tmr0.c: 256:     do { LATCbits.LATC3 = 1; } while(0);
+[e :U 432 ]
 {
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
 }
-[e :U 425 ]
-"231
-[; ;mcc_generated_files/tmr0.c: 231: }
-[e :UE 423 ]
+[e :U 431 ]
+"257
+[; ;mcc_generated_files/tmr0.c: 257: }
+[e :UE 429 ]
 }
-"233
-[; ;mcc_generated_files/tmr0.c: 233: void Z3SetLow(){
+"259
+[; ;mcc_generated_files/tmr0.c: 259: void Z3SetLow(){
 [v _Z3SetLow `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z3SetLow ]
 [f ]
-"234
-[; ;mcc_generated_files/tmr0.c: 234:     do { LATCbits.LATC3 = 0; } while(0);
-[e :U 430 ]
+"260
+[; ;mcc_generated_files/tmr0.c: 260:     do { LATCbits.LATC3 = 0; } while(0);
+[e :U 436 ]
 {
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
 }
-[e :U 429 ]
-"235
-[; ;mcc_generated_files/tmr0.c: 235: }
-[e :UE 427 ]
+[e :U 435 ]
+"261
+[; ;mcc_generated_files/tmr0.c: 261: }
+[e :UE 433 ]
 }
-"237
-[; ;mcc_generated_files/tmr0.c: 237: void Z4SetHigh(void){
+"263
+[; ;mcc_generated_files/tmr0.c: 263: void Z4SetHigh(void){
 [v _Z4SetHigh `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z4SetHigh ]
 [f ]
-"238
-[; ;mcc_generated_files/tmr0.c: 238:     do { LATCbits.LATC2 = 1; } while(0);
-[e :U 434 ]
+"264
+[; ;mcc_generated_files/tmr0.c: 264:     do { LATCbits.LATC2 = 1; } while(0);
+[e :U 440 ]
 {
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
 }
-[e :U 433 ]
-"239
-[; ;mcc_generated_files/tmr0.c: 239: }
-[e :UE 431 ]
+[e :U 439 ]
+"265
+[; ;mcc_generated_files/tmr0.c: 265: }
+[e :UE 437 ]
 }
-"241
-[; ;mcc_generated_files/tmr0.c: 241: void Z4SetLow(){
+"267
+[; ;mcc_generated_files/tmr0.c: 267: void Z4SetLow(){
 [v _Z4SetLow `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z4SetLow ]
 [f ]
-"242
-[; ;mcc_generated_files/tmr0.c: 242:     do { LATCbits.LATC2 = 0; } while(0);
-[e :U 438 ]
+"268
+[; ;mcc_generated_files/tmr0.c: 268:     do { LATCbits.LATC2 = 0; } while(0);
+[e :U 444 ]
 {
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
 }
-[e :U 437 ]
-"243
-[; ;mcc_generated_files/tmr0.c: 243: }
-[e :UE 435 ]
+[e :U 443 ]
+"269
+[; ;mcc_generated_files/tmr0.c: 269: }
+[e :UE 441 ]
 }

@@ -42,7 +42,7 @@
 */
 
 #include "mcc_generated_files/mcc.h"
-#include "main.h"
+
 
 #define DEBOUNCE   30
 #define ACTUATOR_DELAY 200
@@ -53,13 +53,8 @@ void LEDs(void);
 void Massage(void);
 
 unsigned char lift_open_debounce, lift_close_debounce, back_open_debounce, back_close_debounce, heat1_debounce, heat2_debounce, intensity_debounce, mode_debounce, lock_debounce;
-__bit lift_open_state, lift_close_state, back_open_state, back_close_state, mode_btn_state, intensity_btn_state;
-unsigned char heat1_state, heat2_state, massage_mode;
-
-
-
-
-
+__bit lift_open_state, lift_close_state, back_open_state, back_close_state, intensity_btn_state;
+unsigned char heat1_state, heat2_state;
 
 
 /*
@@ -85,17 +80,35 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
-    while (1)
-    {
+    while (1){
         Debounce();
         Execute();
         LEDs();
-        // Add your application code
     }
 }
 
-
+//Check buttons and update states accordingly
 void Debounce(void){
+    
+    //don't check any buttons while init_led_timer is on
+    if(led_flash_timer){
+       return; 
+    }
+    
+    //Debounce the lock button. If the lock button is pressed, do not check other buttons
+    if(!LOCK_BTN_GetValue()){
+        if(lock_debounce){
+            lock_debounce--;
+        }else{
+            lock_btn_state = 1;
+            return;
+        }
+    }else{
+        lock_debounce = DEBOUNCE;
+        lock_btn_state = 0;
+    }
+    
+    //Debounce lift open
     if(!LIFT_OPEN_BTN_GetValue()){
         if(lift_open_debounce){
             lift_open_debounce--;
@@ -107,6 +120,7 @@ void Debounce(void){
         lift_open_state = 0;
     }
     
+    //Debounce lift close
     if(!LIFT_CLOSE_BTN_GetValue()){
         if(lift_close_debounce){
             lift_close_debounce--;
@@ -118,6 +132,7 @@ void Debounce(void){
         lift_close_state = 0;
     }
     
+    //Debounce back open
     if(!BACK_OPEN_BTN_GetValue()){
         if(back_open_debounce){
             back_open_debounce--;
@@ -129,6 +144,7 @@ void Debounce(void){
         back_open_state = 0;
     }
     
+    //Debounce back close
     if(!BACK_CLOSE_BTN_GetValue()){
         if(back_close_debounce){
             back_close_debounce--;
@@ -140,11 +156,17 @@ void Debounce(void){
         back_close_state = 0;
     }
     
+    //if actuator buttons are pressed, don't check other buttons
+    if(lift_open_state || lift_close_state || back_open_state || back_close_state){
+        return;
+    }
+    
+    //Debounce heat1 button. If button is pressed, change the heat1 state
     if(!HEAT1_BTN_GetValue()){
         if(heat1_debounce){
             heat1_debounce--;
             if(!heat1_debounce){
-                heat1_timer = HEAT_TIMEOUT; 
+                heat1_timer = HEAT_TIMEOUT;
                 heat1_state++;
                 if(heat1_state > 2){
                     heat1_state = 0;
@@ -154,6 +176,7 @@ void Debounce(void){
     }else{
         heat1_debounce = DEBOUNCE;
     }
+    //Debounce heat2 button. If button is pressed, change the heat2 state
     if(!HEAT2_BTN_GetValue()){
         if(heat2_debounce){
             heat2_debounce--;
@@ -168,48 +191,46 @@ void Debounce(void){
     }else{
         heat2_debounce = DEBOUNCE;
     }
-    
-    if(!LOCK_BTN_GetValue()){
-        if(lock_debounce){
-            lock_debounce--;
-        }else{
-            lock_btn_state = 1;
-        }
-    }else{
-        lock_debounce = DEBOUNCE;
-        lock_btn_state = 0;
-    }
-    
+    //Debounce massage mode button.
     if(!MASSAGE_BTN_GetValue()){
         if(mode_debounce){
             mode_debounce--;
             if(!mode_debounce){
                 massage_timer = MASSAGE_TIMEOUT;
                 mode_btn_state = 1;
-                if(!massage_intensity_setting){
-                    massage_intensity_setting = 1;
-                }else{
-                    massage_mode++;
-                    if(massage_mode > 2){
-                        massage_mode = 0;
-                    }
+                if(!massage_power){         //turn on massage if it was off
+                    massage_power = 1;
+                }else{                      
+                    //set should_change_mode. This will be cleared in the ISR if the massage button is held to turn massage off
+                    should_change_mode = 1;
                 }
             }
         }
     }else{
         mode_btn_state = 0;
         mode_debounce = DEBOUNCE;
+        //on button release, cycle mode if it was a regular button press
+        if(should_change_mode){
+            should_change_mode = 0;
+            massage_mode++;
+            if(massage_mode > 2){
+                massage_mode = 0;
+            }
+        }
     }
     
+    //Debounce intensity button. Cycle intensity if massage is on when pressed.
     if(!INTENSITY_BTN_GetValue()){
         if(intensity_debounce){
             intensity_debounce--;
             if(!intensity_debounce){
                 massage_timer = MASSAGE_TIMEOUT;
                 intensity_btn_state = 1;
-                massage_intensity_setting++;
-                if(massage_intensity_setting > 3){
-                    massage_intensity_setting = 0;
+                if(massage_power){
+                    massage_intensity_setting++;
+                    if(massage_intensity_setting > 2){
+                        massage_intensity_setting = 0;
+                    }
                 }
             }
         }
@@ -220,63 +241,96 @@ void Debounce(void){
 }
 
 void Execute(void){
-    
-    if(lock_btn_state || lock_actuators || (lift_open_state==lift_close_state)){
+    //Turn all outputs off and reset if HC is locked or flashing led's
+    if(hand_control_locked || led_flash_timer){
         LIFT_OPEN_OUT_SetLow();
         LIFT_CLOSE_OUT_SetLow();
-    }else{
-        if(lift_open_state){
-            LIFT_CLOSE_OUT_SetLow(); 
-            if(lift_open_delay){
-                LIFT_OPEN_OUT_SetLow();
-            }else{
-                LIFT_OPEN_OUT_SetHigh();
-                lift_close_delay = ACTUATOR_DELAY;
-            }
-        }else if(lift_close_state){
-            LIFT_OPEN_OUT_SetLow();
-            if(lift_close_delay){
-                LIFT_CLOSE_OUT_SetLow();
-            }else{
-                LIFT_CLOSE_OUT_SetHigh(); 
-                lift_open_delay = ACTUATOR_DELAY;
-            }
-        }
-    }
-    
-    if(lock_btn_state || lock_actuators || (back_open_state==back_close_state)){
         BACK_OPEN_OUT_SetLow();
         BACK_CLOSE_OUT_SetLow();
-    }else{
-        if(back_open_state){
-            BACK_CLOSE_OUT_SetLow(); 
-            if(back_open_delay){
-                BACK_OPEN_OUT_SetLow();
-            }else{
-                BACK_OPEN_OUT_SetHigh();
-                back_close_delay = ACTUATOR_DELAY;
-            }
-        }else if(back_close_state){
-            BACK_OPEN_OUT_SetLow();
-            if(back_close_delay){
-                BACK_CLOSE_OUT_SetLow();
-            }else{
-                BACK_CLOSE_OUT_SetHigh(); 
-                back_open_delay = ACTUATOR_DELAY;
-            }
+        heat1_state = 0;
+        heat2_state = 0;
+        HEAT1_OUT_SetLow();
+        HEAT2_OUT_SetLow();
+        ZONE1_OUT_SetLow();
+        ZONE2_OUT_SetLow();
+        ZONE3_OUT_SetLow();
+        ZONE4_OUT_SetLow();
+        massage_mode = 0;
+        massage_intensity_setting = 1;
+        massage_power = 0;
+        return;
+    }
+
+    //handle actuators. Only run an actuator if:
+    // - exactly one actuator button is pressed
+    // - the lock button is not pressed
+    // - the actuator is not waiting on a timer to switch directions
+    if(lift_open_state && !(lift_close_state || back_open_state || back_close_state || lock_btn_state)){
+        if(lift_open_delay){
+            LIFT_OPEN_OUT_SetLow();
+        }else{
+            LIFT_OPEN_OUT_SetHigh();
+            lift_close_delay = ACTUATOR_DELAY;
         }
+        LIFT_CLOSE_OUT_SetLow();
+        BACK_OPEN_OUT_SetLow();
+        BACK_CLOSE_OUT_SetLow();
+    }else if(lift_close_state && !(lift_open_state || back_open_state || back_close_state || lock_btn_state)){
+        if(lift_close_delay){
+            LIFT_CLOSE_OUT_SetLow();
+        }else{
+            LIFT_CLOSE_OUT_SetHigh();
+            lift_open_delay = ACTUATOR_DELAY;
+        }
+        LIFT_OPEN_OUT_SetLow();
+        BACK_OPEN_OUT_SetLow();
+        BACK_CLOSE_OUT_SetLow();
+    }else if(back_open_state && !(lift_open_state || lift_close_state ||  back_close_state || lock_btn_state)){
+        if(back_open_delay){
+            BACK_OPEN_OUT_SetLow();
+        }else{
+            BACK_OPEN_OUT_SetHigh();
+            back_close_delay = ACTUATOR_DELAY;
+        }
+        LIFT_OPEN_OUT_SetLow();
+        LIFT_CLOSE_OUT_SetLow();
+        BACK_CLOSE_OUT_SetLow();
+    }else if(back_close_state && !(lift_open_state || lift_close_state || back_open_state || lock_btn_state)){
+        if(back_close_delay){
+            BACK_CLOSE_OUT_SetLow();
+        }else{
+            BACK_CLOSE_OUT_SetHigh();
+            back_open_delay = ACTUATOR_DELAY;
+        }
+        LIFT_OPEN_OUT_SetLow();
+        LIFT_CLOSE_OUT_SetLow();
+        BACK_OPEN_OUT_SetLow();
+    }else{
+        LIFT_OPEN_OUT_SetLow();
+        LIFT_CLOSE_OUT_SetLow();
+        BACK_OPEN_OUT_SetLow();
+        BACK_CLOSE_OUT_SetLow();
     }
     
+    if(pwm_count){
+        pwm_count--;
+    }else{
+        pwm_count = PWM_MAX;
+    }
+    
+    //Turn off heat if respective timer has timed out
     if(!heat1_timer){
         heat1_state = 0;
     }
     if(!heat2_timer){
         heat2_state = 0;
     }
-    if(LIFT_OPEN_OUT_GetValue() || LIFT_CLOSE_OUT_GetValue() || BACK_OPEN_OUT_GetValue() || BACK_CLOSE_OUT_GetValue()){
+    
+    // perform heat operations if no actuator buttons are pressed
+    if(lift_open_state || lift_close_state || back_open_state || back_close_state){
         HEAT1_OUT_SetLow();
         HEAT2_OUT_SetLow();
-    }else{
+    }else{  //stagger the heat, so the two heat outputs are never active at the same instant, even if both are on high
         if(pwm_count <= HEAT_PHASE_1){
             HEAT2_OUT_SetLow();
             if(heat1_state){
@@ -286,7 +340,7 @@ void Execute(void){
             }
         }else if(pwm_count <= HEAT_PHASE_2){
             HEAT2_OUT_SetLow();
-            if(heat1_state == 1){
+            if(heat1_state == 2){
                 HEAT1_OUT_SetHigh();
             }else{
                 HEAT1_OUT_SetLow();
@@ -300,136 +354,220 @@ void Execute(void){
             }
         }else{
             HEAT1_OUT_SetLow();
-            if(heat2_state == 1){
+            if(heat2_state == 2){
                 HEAT2_OUT_SetHigh();
             }else{
                 HEAT2_OUT_SetLow();
             }
         } 
     }
-    switch(massage_intensity_setting){
-        case 0:
-            massage_intensity = 0;
-            break;
-        case 1:
-            massage_intensity = MASSAGE_LOW_PWM;
-            break;
-        case 2:
-            massage_intensity = MASSAGE_MED_PWM;
-            break;
-        case 3:
-            massage_intensity = MASSAGE_HIGH_PWM;
-            break;
-    }
-    Massage();
+    
+    //perform massage functions
+    Massage(); 
 }
 
 void LEDs(void){
-    if(lock_actuators){
+    //Turn on all LED's for a brief time during start-up and after HC is unlocked
+    if(led_flash_timer){
         LOCK_LED_GND_SetLow();
-    }else{
-        LOCK_LED_GND_SetHigh();
-    }
-    if(LIFT_OPEN_OUT_GetValue() || LIFT_CLOSE_OUT_GetValue()){
+        
         LIFT_LED_GND_SetLow();
-    }else{
-        LIFT_LED_GND_SetHigh();
-    }
-    
-    if(BACK_OPEN_OUT_GetValue() || BACK_CLOSE_OUT_GetValue()){
         BACK_LED_GND_SetLow();
-    }else{
+        
+        HEAT1_RED_GND_SetLow();
+        HEAT1_GRN_GND_SetLow();
+        
+        HEAT2_RED_GND_SetLow();
+        HEAT2_GRN_GND_SetLow();
+        
+        STEADY_LED_GND_SetLow();
+        WAVE_LED_GND_SetLow();
+        PULSE_LED_GND_SetLow();
+        LOW_LED_GND_SetLow();
+        MED_LED_GND_SetLow();
+        HIGH_LED_GND_SetLow();
+        
+        INTENSITY_LED_SetHigh();
+        MODE_LED_SetHigh();  
+        return;
+    }
+    
+    //turn off all LEDs except the lock LED while the HC is locked
+    if(hand_control_locked){
+        LOCK_LED_GND_SetLow();
+        
+        LIFT_LED_GND_SetHigh();
         BACK_LED_GND_SetHigh();
-    }
-    
-    switch(heat1_state){
-        case 1:
-            HEAT1_RED_GND_SetLow();
-            HEAT1_GRN_GND_SetHigh();
-            break;
-        case 2:
-            HEAT1_RED_GND_SetLow();
-            HEAT1_GRN_GND_SetLow();
-            break;
-        default:
-            HEAT1_RED_GND_SetHigh();
-            HEAT1_GRN_GND_SetHigh();
-            break;
-    }
-    
-    switch(heat2_state){
-        case 1:
-            HEAT2_RED_GND_SetLow();
-            HEAT2_GRN_GND_SetHigh();
-            break;
-        case 2:
-            HEAT2_RED_GND_SetLow();
-            HEAT2_GRN_GND_SetLow();
-            break;
-        default:
-            HEAT2_RED_GND_SetHigh();
-            HEAT2_GRN_GND_SetHigh();
-            break;
-    }
-    
-    if(massage_intensity_setting){
-
-        switch(massage_mode){
-            case 0:
-                STEADY_LED_GND_SetLow();
-                WAVE_LED_GND_SetHigh();
-                PULSE_LED_GND_SetHigh();
-                break;
-            case 1:
-                STEADY_LED_GND_SetHigh();
-                WAVE_LED_GND_SetLow();
-                PULSE_LED_GND_SetHigh();
-                break;
-            case 2:
-                STEADY_LED_GND_SetHigh();
-                WAVE_LED_GND_SetHigh();
-                PULSE_LED_GND_SetLow();
-                break;
-            default: 
-                break;
-        }
-        switch(massage_intensity_setting){
-            case 1: 
-                LOW_LED_GND_SetLow();
-                MED_LED_GND_SetHigh();
-                HIGH_LED_GND_SetHigh();
-                break;
-            case 2:
-                LOW_LED_GND_SetHigh();
-                MED_LED_GND_SetLow();
-                HIGH_LED_GND_SetHigh();
-                break;
-            case 3:
-                LOW_LED_GND_SetHigh();
-                MED_LED_GND_SetHigh();
-                HIGH_LED_GND_SetLow();
-                break;
-            default:
-                break;
-        }
-    }else{
+        
+        HEAT1_RED_GND_SetHigh();
+        HEAT1_GRN_GND_SetHigh();
+        
+        HEAT2_RED_GND_SetHigh();
+        HEAT2_GRN_GND_SetHigh();
+        
         STEADY_LED_GND_SetHigh();
         WAVE_LED_GND_SetHigh();
         PULSE_LED_GND_SetHigh();
         LOW_LED_GND_SetHigh();
         MED_LED_GND_SetHigh();
         HIGH_LED_GND_SetHigh();
-    }  
+        
+        INTENSITY_LED_SetLow();
+        MODE_LED_SetLow();  
+        return;
+    }
+    //HC is not locked, so turn off LOCK LED
+    LOCK_LED_GND_SetHigh();
+
+    //check if any actuator button is pressed
+    if(lift_open_state || lift_close_state || back_open_state || back_close_state){
+        //turn off Heat and massage LEDs when any actuator button is pressed
+        HEAT1_RED_GND_SetHigh();
+        HEAT1_GRN_GND_SetHigh();
+
+        HEAT2_RED_GND_SetHigh();
+        HEAT2_GRN_GND_SetHigh();
+
+        STEADY_LED_GND_SetHigh();
+        WAVE_LED_GND_SetHigh();
+        PULSE_LED_GND_SetHigh();
+        LOW_LED_GND_SetHigh();
+        MED_LED_GND_SetHigh();
+        HIGH_LED_GND_SetHigh();
+
+        INTENSITY_LED_SetLow();
+        MODE_LED_SetLow();
+
+        //Turn on lift or back LED if they are running
+        if(LIFT_OPEN_OUT_GetValue() || LIFT_CLOSE_OUT_GetValue()){
+            LIFT_LED_GND_SetLow();
+        }else{
+            LIFT_LED_GND_SetHigh();
+        }
+
+        if(BACK_OPEN_OUT_GetValue() || BACK_CLOSE_OUT_GetValue()){
+            BACK_LED_GND_SetLow();
+        }else{
+            BACK_LED_GND_SetHigh();
+        }
+    }else{
+        //turn off back and lift LED if no actuators are running
+        LIFT_LED_GND_SetHigh();
+        BACK_LED_GND_SetHigh();
+
+        //Heat LEDs
+        switch(heat1_state){
+            case 1:
+                HEAT1_RED_GND_SetHigh();
+                HEAT1_GRN_GND_SetLow();
+                break;
+            case 2:
+                HEAT1_RED_GND_SetLow();
+                HEAT1_GRN_GND_SetHigh();
+                break;
+            default:
+                HEAT1_RED_GND_SetHigh();
+                HEAT1_GRN_GND_SetHigh();
+                break;
+        }
+
+        switch(heat2_state){
+            case 1:
+                HEAT2_RED_GND_SetHigh();
+                HEAT2_GRN_GND_SetLow();
+                break;
+            case 2:
+                HEAT2_RED_GND_SetLow();
+                HEAT2_GRN_GND_SetHigh();
+                break;
+            default:
+                HEAT2_RED_GND_SetHigh();
+                HEAT2_GRN_GND_SetHigh();
+                break;
+        }
+
+        //Massage_LEDs
+        if(massage_power){
+            //turn on mode and intensity button backlight if massage is on
+            INTENSITY_LED_SetHigh(); 
+            MODE_LED_SetHigh();
+
+            switch(massage_mode){
+                case 0:     //steady mode
+                    STEADY_LED_GND_SetLow();
+                    WAVE_LED_GND_SetHigh();
+                    PULSE_LED_GND_SetHigh();
+                    break;
+                case 1:     //wave mode
+                    STEADY_LED_GND_SetHigh();
+                    WAVE_LED_GND_SetLow();
+                    PULSE_LED_GND_SetHigh();
+                    break;
+                case 2:     //pulse mode
+                    STEADY_LED_GND_SetHigh();
+                    WAVE_LED_GND_SetHigh();
+                    PULSE_LED_GND_SetLow();
+                    break;
+                default: 
+                    break;
+            }
+            switch(massage_intensity_setting){
+                case 0:     //low intensity
+                    LOW_LED_GND_SetLow();
+                    MED_LED_GND_SetHigh();
+                    HIGH_LED_GND_SetHigh();
+                    break;
+                case 1:     //med intensity
+                    LOW_LED_GND_SetHigh();
+                    MED_LED_GND_SetLow();
+                    HIGH_LED_GND_SetHigh();
+                    break;
+                case 2:     //high intensity
+                    LOW_LED_GND_SetHigh();
+                    MED_LED_GND_SetHigh();
+                    HIGH_LED_GND_SetLow();
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            //turn massage LEDs off if massage is off
+            STEADY_LED_GND_SetHigh();
+            WAVE_LED_GND_SetHigh();
+            PULSE_LED_GND_SetHigh();
+            LOW_LED_GND_SetHigh();
+            MED_LED_GND_SetHigh();
+            HIGH_LED_GND_SetHigh();
+            INTENSITY_LED_SetLow();
+            MODE_LED_SetLow();
+        }
+    }
 }
 
-void Massage(void){    
+void Massage(void){
+    //turn off massage if massage timer has ended
     if(!massage_timer){
-        massage_intensity_setting = 0;
+        massage_power = 0;
     }
-    if(massage_intensity_setting && LIFT_LED_GND_GetValue()){
+    //run massage if massage is on and no actuator buttons are pressed
+    if(massage_power && !(lift_open_state || lift_close_state || back_open_state || back_close_state)){
+        //updated massage intensity
+        switch(massage_intensity_setting){
+            case 0:
+                massage_intensity = MASSAGE_LOW_PWM;
+                break;
+            case 1:
+                massage_intensity = MASSAGE_MED_PWM;
+                break;
+            case 2:
+                massage_intensity = MASSAGE_HIGH_PWM;
+                break;
+        }
+        
         switch(massage_mode){
-            case 0://continuous
-                if(massage_intensity > pwm_count){
+            case 0: //steady
+                //all zones run at the same continuous intensity
+                if(steady_massage_intensity > pwm_count){
                     ZONE1_OUT_SetHigh();
                     ZONE2_OUT_SetHigh();
                     ZONE3_OUT_SetHigh();
@@ -441,19 +579,27 @@ void Massage(void){
                     ZONE4_OUT_SetLow();
                 }
                 break;
-            case 1://wave
+            case 1: //wave
+                
+                //Zone ramping up
                 if(pulse_wave_in_intensity > pwm_count){
                     WaveInOn();
-                    WaveOutOff();
                 }else{
                     WaveInOff();
-                    WaveOutOn();
                 }
+                //Zone ramping down
+                if(pulse_wave_out_intensity > pwm_count){
+                    WaveOutOn();
+                }else{
+                    WaveOutOff();
+                }
+                //Zones currently off
                 WaveGap1Off();
                 WaveGap2Off();
                 break;
             case 2://pulse
                 if(pulse_direction){
+                    //all zones ramp up if pulse_direction is 1
                     if(pulse_wave_in_intensity > pwm_count){
                         ZONE1_OUT_SetHigh();
                         ZONE2_OUT_SetHigh();
@@ -466,6 +612,7 @@ void Massage(void){
                         ZONE4_OUT_SetLow();
                     }
                 }else{
+                    //all zones ramp down if pulse direction is 0
                     if(pulse_wave_out_intensity > pwm_count){
                         ZONE1_OUT_SetHigh();
                         ZONE2_OUT_SetHigh();
@@ -481,13 +628,12 @@ void Massage(void){
 
                 break;
             default: 
-                ZONE1_OUT_SetLow();
-                ZONE2_OUT_SetLow();
-                ZONE3_OUT_SetLow();
-                ZONE4_OUT_SetLow();
+                //reset to 0 if massage mode is none of these
+                massage_mode = 0;
                 break;
         }
     }else{
+        //massage off
         ZONE1_OUT_SetLow();
         ZONE2_OUT_SetLow();
         ZONE3_OUT_SetLow();
