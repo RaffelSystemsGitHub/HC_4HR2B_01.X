@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\dklepps\AppData\Local\Temp\s40g.o
+$C:\Users\dklepps\AppData\Local\Temp\se4g.o
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 13 13 2 2
 config CONFIG 0 8007 8007 2 2
@@ -133,32 +133,32 @@ STRING 6AE-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\HC_4HR2B_01.X.production.o
-15 cinit CODE >2484:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-15 cinit CODE >2487:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-15 cinit CODE >2717:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-18 cinit CODE >2718:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-19 cinit CODE >2722:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-1A cinit CODE >2723:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-1B cinit CODE >2724:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-1C cinit CODE >2725:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-1D cinit CODE >2726:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-1E cinit CODE >2727:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-1F cinit CODE >2728:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-20 cinit CODE >2729:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-21 cinit CODE >2730:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-22 cinit CODE >2731:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-25 cinit CODE >2748:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-26 cinit CODE >2749:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-27 cinit CODE >2753:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-28 cinit CODE >2754:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-29 cinit CODE >2755:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-2A cinit CODE >2756:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-2B cinit CODE >2757:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-2C cinit CODE >2758:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-2F cinit CODE >2764:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-2F cinit CODE >2766:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-30 cinit CODE >2767:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-31 cinit CODE >2768:C:\Users\dklepps\AppData\Local\Temp\s40g.s
+15 cinit CODE >2484:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+15 cinit CODE >2487:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+15 cinit CODE >2717:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+18 cinit CODE >2718:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+19 cinit CODE >2722:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+1A cinit CODE >2723:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+1B cinit CODE >2724:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+1C cinit CODE >2725:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+1D cinit CODE >2726:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+1E cinit CODE >2727:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+1F cinit CODE >2728:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+20 cinit CODE >2729:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+21 cinit CODE >2730:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+22 cinit CODE >2731:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+25 cinit CODE >2748:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+26 cinit CODE >2749:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+27 cinit CODE >2753:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+28 cinit CODE >2754:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+29 cinit CODE >2755:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+2A cinit CODE >2756:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+2B cinit CODE >2757:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+2C cinit CODE >2758:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+2F cinit CODE >2764:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+2F cinit CODE >2766:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+30 cinit CODE >2767:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+31 cinit CODE >2768:C:\Users\dklepps\AppData\Local\Temp\se4g.s
 4 intentry CODE >52:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/interrupt_manager.c
 6 intentry CODE >55:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/interrupt_manager.c
 E intentry CODE >57:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\mcc_generated_files/interrupt_manager.c
@@ -697,22 +697,22 @@ FF text8 CODE >317:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 65B maintext CODE >84:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 65E maintext CODE >85:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
 661 maintext CODE >86:C:\Users\dklepps\Source\Repos\HC_4HR2B_01.X\main.c
-68A clrtext CODE >2737:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68A clrtext CODE >2738:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68B clrtext CODE >2739:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68B clrtext CODE >2740:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68C clrtext CODE >2741:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68D clrtext CODE >2742:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68E clrtext CODE >2743:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-68F clrtext CODE >2744:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-684 inittext CODE >2706:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-684 inittext CODE >2707:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-685 inittext CODE >2708:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-685 inittext CODE >2709:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-686 inittext CODE >2710:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-687 inittext CODE >2711:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-688 inittext CODE >2712:C:\Users\dklepps\AppData\Local\Temp\s40g.s
-689 inittext CODE >2713:C:\Users\dklepps\AppData\Local\Temp\s40g.s
+68A clrtext CODE >2737:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68A clrtext CODE >2738:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68B clrtext CODE >2739:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68B clrtext CODE >2740:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68C clrtext CODE >2741:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68D clrtext CODE >2742:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68E clrtext CODE >2743:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+68F clrtext CODE >2744:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+684 inittext CODE >2706:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+684 inittext CODE >2707:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+685 inittext CODE >2708:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+685 inittext CODE >2709:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+686 inittext CODE >2710:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+687 inittext CODE >2711:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+688 inittext CODE >2712:C:\Users\dklepps\AppData\Local\Temp\se4g.s
+689 inittext CODE >2713:C:\Users\dklepps\AppData\Local\Temp\se4g.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -752,12 +752,12 @@ _LEDs 76C 0 CODE 0 text7 dist/default/production\HC_4HR2B_01.X.production.o
 _TMR0 15 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 _WPUB 20D 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 _WPUE 210 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\dklepps\AppData\Local\Temp\s40g.o
+___sp 0 0 STACK 2 stack C:\Users\dklepps\AppData\Local\Temp\se4g.o
 _main CAE 0 CODE 0 maintext dist/default/production\HC_4HR2B_01.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 _lock_timer 28 0 BANK0 1 bssBANK0 dist/default/production\HC_4HR2B_01.X.production.o
 _lock_flag 389 -310 COMMON 1 bitbssCOMMON dist/default/production\HC_4HR2B_01.X.production.o
-start 26 0 CODE 0 init C:\Users\dklepps\AppData\Local\Temp\s40g.o
+start 26 0 CODE 0 init C:\Users\dklepps\AppData\Local\Temp\se4g.o
 _TMR0_InterruptHandler 64 0 BANK0 1 nvBANK0 dist/default/production\HC_4HR2B_01.X.production.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 __size_of_LEDs 0 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
@@ -776,12 +776,12 @@ __pbitbssCOMMON 380 -310 COMMON 1 bitbssCOMMON dist/default/production\HC_4HR2B_
 __size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
 TMR0_SetInterruptHandler@InterruptHandler A0 0 BANK1 1 cstackBANK1 dist/default/production\HC_4HR2B_01.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\s40g.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\s40g.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\s40g.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\s40g.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\s40g.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\s40g.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\se4g.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\se4g.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\se4g.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\se4g.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\se4g.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\dklepps\AppData\Local\Temp\se4g.o
 _heat1_debounce 30 0 BANK0 1 bssBANK0 dist/default/production\HC_4HR2B_01.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 _heat2_debounce 2F 0 BANK0 1 bssBANK0 dist/default/production\HC_4HR2B_01.X.production.o
@@ -818,8 +818,8 @@ __end_of_Debounce 52E 0 CODE 0 text18 dist/default/production\HC_4HR2B_01.X.prod
 __end_of___awdiv BC8 0 CODE 0 text22 dist/default/production\HC_4HR2B_01.X.production.o
 _intensity_btn_state 380 -310 COMMON 1 bitbssCOMMON dist/default/production\HC_4HR2B_01.X.production.o
 _OPTION_REG 95 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
-___stackhi 21EF 0 ABS 0 - C:\Users\dklepps\AppData\Local\Temp\s40g.o
-___stacklo 2052 0 ABS 0 - C:\Users\dklepps\AppData\Local\Temp\s40g.o
+___stackhi 21EF 0 ABS 0 - C:\Users\dklepps\AppData\Local\Temp\se4g.o
+___stacklo 2052 0 ABS 0 - C:\Users\dklepps\AppData\Local\Temp\se4g.o
 _hand_control_locked 38A -310 COMMON 1 bitbssCOMMON dist/default/production\HC_4HR2B_01.X.production.o
 __LidataCOMMON 0 0 ABS 0 idataCOMMON -
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
@@ -836,7 +836,7 @@ __pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/default/production\HC_4HR2B_01.X.pr
 __end_of_Z3SetLow D2E 0 CODE 0 text10 dist/default/production\HC_4HR2B_01.X.production.o
 _WDTCON 97 0 ABS 0 - dist/default/production\HC_4HR2B_01.X.production.o
 _lock_btn_state 38B -310 COMMON 1 bitbssCOMMON dist/default/production\HC_4HR2B_01.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\dklepps\AppData\Local\Temp\s40g.o
+___int_sp 0 0 STACK 2 stack C:\Users\dklepps\AppData\Local\Temp\se4g.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -1002,7 +1002,7 @@ __HnvBANK0 0 0 ABS 0 nvBANK0 -
 _mode_debounce 2D 0 BANK0 1 bssBANK0 dist/default/production\HC_4HR2B_01.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 _Z4SetHigh D52 0 CODE 0 text17 dist/default/production\HC_4HR2B_01.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\dklepps\AppData\Local\Temp\s40g.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\dklepps\AppData\Local\Temp\se4g.o
 _back_open_debounce 32 0 BANK0 1 bssBANK0 dist/default/production\HC_4HR2B_01.X.production.o
 _massage_phase 36 0 BANK0 1 bssBANK0 dist/default/production\HC_4HR2B_01.X.production.o
 _massage_power 386 -310 COMMON 1 bitbssCOMMON dist/default/production\HC_4HR2B_01.X.production.o
